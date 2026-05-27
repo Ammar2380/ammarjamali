@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Ammar Jamali — AI Engineer</title>
+<meta name="description" content="Muhammad Ammar Jamali — AI Engineer & ML Developer. Building end-to-end machine learning systems that ship to production.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --sans:'Inter',sans-serif;
+  --serif:'Instrument Serif',Georgia,serif;
+  --mono:'JetBrains Mono',monospace;
+  --ease:.3s cubic-bezier(.4,0,.2,1);
+  --max:1100px;
+  --pad:clamp(1.5rem,4vw,4rem);
+}
+[data-theme="dark"]{
+  --bg:#050505;--bg2:#0d0d0d;--bg3:#141414;--bg4:#1a1a1a;
+  --text:#efefef;--muted:rgba(239,239,239,.45);--muted2:rgba(239,239,239,.2);
+  --border:rgba(255,255,255,.08);--border2:rgba(255,255,255,.16);
+  --card:#0d0d0d;--nav-bg:rgba(5,5,5,.9);
+  --rect-bg:#0d0d0d;--rect-hover:#131313;
+  --accent:#efefef;--accent2:rgba(239,239,239,.06);
+  --cli-bg:#0a0a0e;--cli-green:#4ade80;--cli-purple:#a78bfa;--cli-cyan:#67e8f9;
+  --tag-bg:rgba(255,255,255,.05);--tag-border:rgba(255,255,255,.1);
+  --frame-bg:#0d0d0d;--frame-border:rgba(255,255,255,.1);
+}
+[data-theme="light"]{
+  --bg:#f5f4f0;--bg2:#eceae4;--bg3:#e2dfd8;--bg4:#d8d5ce;
+  --text:#141414;--muted:#555550;--muted2:#999890;
+  --border:rgba(0,0,0,.1);--border2:rgba(0,0,0,.2);
+  --card:#faf9f6;--nav-bg:rgba(245,244,240,.92);
+  --rect-bg:#faf9f6;--rect-hover:#f0efe9;
+  --accent:#141414;--accent2:rgba(0,0,0,.04);
+  --cli-bg:#1a1a26;--cli-green:#4ade80;--cli-purple:#a78bfa;--cli-cyan:#67e8f9;
+  --tag-bg:rgba(0,0,0,.06);--tag-border:rgba(0,0,0,.12);
+  --frame-bg:#eceae4;--frame-border:rgba(0,0,0,.15);
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.65;font-weight:300;-webkit-font-smoothing:antialiased;transition:background var(--ease),color var(--ease);overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+::selection{background:rgba(128,128,128,.18)}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:.9rem var(--pad);gap:1.5rem;border-bottom:1px solid transparent;transition:border-color var(--ease),background var(--ease)}
+nav.scrolled{border-color:var(--border2);background:var(--nav-bg);backdrop-filter:blur(20px)}
+.nav-logo{font-family:var(--serif);font-size:1.05rem;cursor:pointer;flex-shrink:0;transition:opacity .2s}
+.nav-logo:hover{opacity:.5}
+.nav-tabs{display:flex;border:1px solid var(--border2);border-radius:100px;overflow:hidden;flex-shrink:0}
+.nav-tab{padding:.4rem .9rem;font-size:11.5px;color:var(--muted);cursor:pointer;transition:background .2s,color .2s;letter-spacing:.02em;white-space:nowrap}
+.nav-tab:hover{color:var(--text)}
+.nav-tab.active{background:var(--accent2);color:var(--text)}
+.nav-right{display:flex;gap:.6rem;align-items:center;flex-shrink:0}
+.icon-btn{width:32px;height:32px;border-radius:7px;border:1px solid var(--border2);background:transparent;color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;transition:background .2s,color .2s}
+.icon-btn:hover{background:var(--accent2);color:var(--text)}
+.nav-cta{font-size:11.5px;padding:.4rem .9rem;border:1px solid var(--border2);border-radius:100px;color:var(--muted);transition:background .2s,color .2s,border-color .2s;white-space:nowrap}
+.nav-cta:hover{color:var(--text);border-color:var(--text);background:var(--accent2)}
+
+/* ── PAGES ── */
+.page{display:none;min-height:100vh;animation:pgIn .35s ease}
+.page.active{display:block}
+@keyframes pgIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8rem var(--pad) 5rem;position:relative}
+.hero-eyebrow{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;margin-bottom:2.25rem;display:flex;align-items:center;gap:10px;justify-content:center}
+.live-dot{width:6px;height:6px;background:#4ade80;border-radius:50%;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(3.25rem,7.5vw,6.5rem);line-height:1.0;letter-spacing:-.025em;margin-bottom:2rem;max-width:820px}
+.hero h1 em{font-style:italic;color:var(--muted)}
+.hero-bio{font-size:15px;color:var(--muted);max-width:440px;line-height:1.8;margin-bottom:3rem;font-weight:300}
+.hero-actions{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;justify-content:center}
+.btn-pill{font-size:12px;padding:9px 20px;border:1px solid var(--border2);border-radius:100px;color:var(--text);transition:background .2s,border-color .2s;cursor:pointer;background:transparent;font-family:var(--sans);letter-spacing:.02em}
+.btn-pill:hover{background:var(--accent2);border-color:var(--text)}
+.btn-pill.ghost{color:var(--muted);border-color:transparent}
+.btn-pill.ghost:hover{color:var(--text);background:transparent;border-color:transparent}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.fadein{animation:fadeUp .7s ease both}
+.fadein:nth-child(1){animation-delay:.02s}
+.fadein:nth-child(2){animation-delay:.12s}
+.fadein:nth-child(3){animation-delay:.22s}
+.fadein:nth-child(4){animation-delay:.32s}
+
+/* ── LAYOUT ── */
+hr.div{border:none;border-top:1px solid var(--border)}
+.section{max-width:var(--max);margin:0 auto;padding:5rem var(--pad)}
+.section-wide{max-width:1300px;margin:0 auto;padding:5rem var(--pad)}
+.sec-label{font-family:var(--mono);font-size:10px;color:var(--muted2);letter-spacing:.18em;text-transform:uppercase;margin-bottom:2.5rem;display:flex;align-items:center;gap:12px}
+.sec-label::after{content:'';width:24px;height:1px;background:var(--border2)}
+.prose{font-size:.975rem;color:var(--muted);line-height:1.95;font-weight:300}
+.prose+.prose{margin-top:1.15rem}
+
+/* ── INJECTED AWESOME PROJECT & EXP STYLES ── */
+.project-grid{display:flex;flex-direction:column;gap:5rem}
+.project-card{display:grid;grid-template-columns:1.1fr 1fr;gap:4rem;align-items:center}
+@media(max-width:968px){.project-card{grid-template-columns:1fr;gap:2rem}}
+.project-visual{width:100%;aspect-ratio:16/10;background:var(--frame-bg);border:1px solid var(--border2);border-radius:8px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;transition:border-color var(--ease)}
+.project-card:hover .project-visual{border-color:var(--text)}
+.code-canvas{width:88%;height:75%;background:var(--cli-bg);border:1px solid var(--border);border-radius:6px;font-family:var(--mono);font-size:11px;padding:1.2rem;color:var(--muted);overflow:hidden;position:relative}
+.code-header{display:flex;align-items:center;gap:6px;margin-bottom:1rem;border-bottom:1px solid var(--border);padding-bottom:.5rem;font-size:10px}
+.code-dot{width:5px;height:5px;border-radius:50%;background:var(--muted2)}
+.project-meta{display:flex;flex-direction:column}
+.project-index{font-family:var(--mono);font-size:11px;color:var(--muted2);margin-bottom:.5rem}
+.project-title{font-family:var(--serif);font-size:clamp(1.8rem,2.5vw,2.4rem);font-weight:400;line-height:1.2;margin-bottom:1rem;color:var(--text)}
+.project-description{font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:1.5rem}
+.project-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem}
+.project-tag{font-family:var(--mono);font-size:10px;color:var(--muted);background:var(--tag-bg);border:1px solid var(--tag-border);padding:2px 10px;border-radius:4px}
+.project-links{display:flex;gap:1.5rem;font-family:var(--mono);font-size:11px;color:var(--muted)}
+.project-links a:hover{color:var(--text)}
+
+.timeline-container{display:flex;flex-direction:column;gap:.5rem}
+.timeline-node{border-left:1px solid var(--border2);padding-left:2rem;position:relative;padding-bottom:3.5rem}
+.timeline-node:last-of-type{padding-bottom:1rem}
+.timeline-node::before{content:'';position:absolute;left:-3.5px;top:6px;width:6px;height:6px;background:var(--muted2);border-radius:50%;transition:background .3s}
+.timeline-node:hover::before{background:var(--text)}
+.node-date{font-family:var(--mono);font-size:11px;color:var(--muted2);margin-bottom:.4rem}
+.node-role{font-family:var(--serif);font-size:1.7rem;font-weight:400;color:var(--text);line-height:1.2}
+.node-company{font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:var(--muted);margin-bottom:1rem;text-transform:uppercase}
+.node-summary{font-size:14px;color:var(--muted);max-width:750px;line-height:1.8}
+.node-summary p{margin-bottom: 0.5rem;}
+
+/* ── SKILL RECTS ── */
+.skill-rect-list{display:flex;flex-direction:column;gap:0;border:1px solid var(--border2);border-radius:6px;overflow:hidden}
+.skill-rect{display:grid;grid-template-columns:160px 1fr;background:var(--rect-bg);border-bottom:1px solid var(--border);transition:background .18s;position:relative;overflow:hidden}
+.skill-rect:last-child{border-bottom:none}
+.skill-rect::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:transparent;transition:background .18s}
+.skill-rect:hover{background:var(--rect-hover)}
+.skill-rect:hover::before{background:var(--text)}
+.skill-rect-cat{font-family:var(--mono);font-size:10.5px;color:var(--muted2);padding:1.1rem 1.5rem;border-right:1px solid var(--border);letter-spacing:.04em;display:flex;align-items:center}
+.skill-rect-vals{font-size:12.5px;color:var(--muted);padding:1.1rem 1.5rem;line-height:1.7}
+
+/* ── EDU RECTS ── */
+.edu-rect-list{display:flex;flex-direction:column;border:1px solid var(--border2);border-radius:6px;overflow:hidden}
+.edu-rect{display:flex;justify-content:space-between;align-items:center;background:var(--rect-bg);border-bottom:1px solid var(--border);padding:1.25rem 1.5rem;gap:2rem;transition:background .18s;position:relative;overflow:hidden}
+.edu-rect:last-child{border-bottom:none}
+.edu-rect::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:transparent;transition:background .18s}
+.edu-rect:hover{background:var(--rect-hover)}
+.edu-rect:hover::before{background:var(--text)}
+.edu-rect-name{font-size:13.5px;color:var(--text);margin-bottom:2px}
+.edu-rect-sub{font-family:var(--mono);font-size:10.5px;color:var(--muted2)}
+.edu-rect-yr{font-family:var(--mono);font-size:10.5px;color:var(--muted2);white-space:nowrap;flex-shrink:0}
+
+/* ── CONTACT RECTS ── */
+.ct-rect-list{display:flex;flex-direction:column;border:1px solid var(--border2);border-radius:6px;overflow:hidden}
+.ct-rect{display:flex;justify-content:space-between;align-items:center;background:var(--rect-bg);border-bottom:1px solid var(--border);padding:1.1rem 1.5rem;transition:background .18s;position:relative;overflow:hidden}
+.ct-rect:last-child{border-bottom:none}
+.ct-rect::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:transparent;transition:background .18s}
+.ct-rect:hover{background:var(--rect-hover)}
+.ct-rect:hover::before{background:var(--text)}
+.ct-rect-label{font-family:var(--mono);font-size:10px;color:var(--muted2);letter-spacing:.1em;text-transform:uppercase}
+.ct-rect a{font-size:12.5px;color:var(--muted);transition:color .15s}
+.ct-rect a:hover{color:var(--text)}
+
+/* ── ABOUT PAGE ── */
+.about-page-hero{min-height:60vh;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:8rem var(--pad) 4rem;max-width:1300px;margin:0 auto}
+.about-page-hero h2{font-family:var(--serif);font-weight:400;font-size:clamp(2.5rem,5vw,5rem);line-height:1.05;letter-spacing:-.025em;margin-bottom:1.25rem;max-width:700px}
+.about-page-hero h2 em{font-style:italic;color:var(--muted)}
+.about-page-hero p{font-size:14px;color:var(--muted);max-width:460px;line-height:1.9}
+.about-chapters{max-width:var(--max);margin:0 auto;padding:0 var(--pad) 4rem}
+.chapter{display:grid;grid-template-columns:180px 1fr;border-bottom:1px solid var(--border);padding:2.5rem 0;gap:3rem}
+.chapter:first-child{border-top:1px solid var(--border)}
+.chapter-label{font-family:var(--mono);font-size:10px;color:var(--muted2);letter-spacing:.15em;text-transform:uppercase;padding-top:.2rem}
+.chapter-text{font-size:.975rem;color:var(--muted);line-height:2}
+
+/* ── PHOTO FRAME (About) ── */
+.about-photo-section{max-width:var(--max);margin:0 auto;padding:3rem var(--pad) 4rem;display:grid;grid-template-columns:240px 1fr;gap:3.5rem;align-items:start}
+.photo-frame{border:1px solid var(--frame-border);border-radius:6px;overflow:hidden;background:var(--frame-bg);aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;position:relative;cursor:pointer}
+.photo-frame img{width:100%;height:100%;object-fit:cover;display:block}
+.photo-frame-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;width:100%;height:100%;min-height:320px}
+.photo-frame-placeholder input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.photo-frame-icon{font-size:2rem;opacity:.2}
+.photo-frame-label{font-family:var(--mono);font-size:10px;color:var(--muted2);letter-spacing:.1em;text-transform:uppercase}
+.photo-frame-sub{font-family:var(--mono);font-size:9px;color:var(--muted2);opacity:.5}
+.about-bio-text{padding-top:.25rem;display:flex;flex-direction:column;gap:0}
+
+/* ── PERSONAL / LANDSCAPE FRAME ── */
+.landscape-section{max-width:var(--max);margin:0 auto;padding:0 var(--pad) 2rem;width:100%}
+.landscape-frame{border:1px solid var(--frame-border);border-radius:6px;overflow:hidden;background:var(--frame-bg);width:100%;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;position:relative;cursor:pointer;max-height:460px}
+.landscape-frame img.frame-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none}
+.landscape-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem}
+.landscape-placeholder input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;z-index:2}
+.landscape-ph-icon{font-size:2.5rem;opacity:.15}
+.landscape-ph-label{font-family:var(--mono);font-size:10px;color:var(--muted2);letter-spacing:.12em;text-transform:uppercase}
+.landscape-ph-sub{font-family:var(--mono);font-size:9px;color:var(--muted2);opacity:.5}
+
+/* ── REELS GRID ── */
+.reels-section{max-width:var(--max);margin:0 auto;padding:2rem var(--pad) 4rem}
+.reels-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.reel-frame{border:1px solid var(--frame-border);border-radius:6px;overflow:hidden;background:var(--frame-bg);aspect-ratio:9/16;display:flex;align-items:center;justify-content:center;position:relative;cursor:pointer;width:100%}
+.reel-frame img{width:100%;height:100%;object-fit:cover;display:block}
+.reel-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem}
+.reel-placeholder input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;z-index:2;width:100%;height:100%}
+.reel-ph-icon{font-size:1.5rem;opacity:.15}
+.reel-ph-num{font-family:var(--mono);font-size:9px;color:var(--muted2);letter-spacing:.1em;text-transform:uppercase}
+
+/* ── THOUGHTS ── */
+.thoughts-wrap{max-width:880px;margin:0 auto;padding:4rem var(--pad)}
+.thoughts-header{font-family:var(--mono);font-size:10px;color:var(--muted2);letter-spacing:.15em;text-transform:uppercase;margin-bottom:2.5rem}
+.thought{padding:1.75rem 0;border-bottom:1px solid var(--border)}
+.thought:first-of-type{border-top:1px solid var(--border)}
+.thought-date{font-family:var(--mono);font-size:10px;color:var(--muted2);margin-bottom:.65rem}
+.thought-text{font-size:14px;color:var(--muted);line-height:1.95;font-weight:300;max-width:700px}
+
+/* ── NOVAPAD ── */
+.novapad-section{max-width:var(--max);margin:0 auto;padding:3rem var(--pad) 3rem}
+.novapad-label{font-family:var(--mono);font-size:10px;color:var(--muted2);letter-spacing:.16em;text-transform:uppercase;margin-bottom:.5rem}
+.novapad-sub{font-family:var(--mono);font-size:9px;color:var(--muted2);opacity:.5;margin-bottom:1.75rem;letter-spacing:.04em}
+.novapad-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.nova-pad{background:var(--frame-bg);border:1px solid var(--frame-border);border-radius:5px;height:82px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;user-select:none;transition:background .07s,border-color .07s,transform .05s;-webkit-tap-highlight-color:transparent}
+.nova-pad .pad-key{font-family:var(--mono);font-size:16px;color:var(--text);opacity:.55;margin-bottom:3px;line-height:1}
+.nova-pad .pad-note{font-family:var(--mono);font-size:9px;color:var(--muted2);opacity:.45;letter-spacing:.04em}
+.nova-pad:hover{border-color:var(--border2);background:var(--rect-hover)}
+.nova-pad.active{background:rgba(74,222,128,.08);border-color:rgba(74,222,128,.3);transform:scale(.95)}
+
+/* ── CHAT FLOAT BUTTON ── */
+.chat-float{
+  position:fixed;bottom:2rem;right:2rem;z-index:300;
+  background:rgba(10,10,10,.85);border:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);
+  padding:.6rem 1.4rem;border-radius:100px;
+  display:flex;align-items:center;gap:12px;
+  cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,.5);
+  transition:all .3s ease;
+}
+.chat-float:hover{border-color:rgba(255,255,255,.18);transform:translateY(-2px)}
+.chat-float-dot{width:6px;height:6px;background:#34d399;border-radius:50%;box-shadow:0 0 8px rgba(52,211,153,.5)}
+.chat-float-label{font-family:var(--mono);font-size:11.5px;color:var(--text)}
+
+/* ── CLI OVERLAY ── */
+.agent-overlay{
+  position:fixed;inset:0;background:rgba(3,3,3,.88);backdrop-filter:blur(10px);
+  z-index:600;display:none;align-items:center;justify-content:center;padding:2rem;
+  opacity:0;transition:opacity .3s ease;
+}
+.agent-overlay.open{display:flex;opacity:1}
+.agent-panel{
+  width:100%;max-width:600px;height:500px;background:#070708;
+  border:1px solid rgba(255,255,255,.06);border-radius:12px;
+  display:flex;flex-direction:column;overflow:hidden;
+  box-shadow:0 40px 100px rgba(0,0,0,.9);
+  transform:translateY(20px);transition:transform .4s cubic-bezier(0.25,1,0.5,1);
+}
+.agent-overlay.open .agent-panel{transform:translateY(0)}
+.cli-topbar{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:.8rem 1.5rem;border-bottom:1px solid rgba(255,255,255,.03);
+  background:rgba(0,0,0,.3);flex-shrink:0;
+}
+.cli-dots{display:flex;gap:6px}
+.cli-dot{width:10px;height:10px;border-radius:50%}
+.cli-dot.close{background:#ff5f56;cursor:pointer}
+.cli-dot.min{background:#ffbd2e}
+.cli-dot.max{background:#27c93f}
+.cli-title-text{font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.25);letter-spacing:.05em}
+.cli-body{
+  flex-grow:1;padding:1.5rem;overflow-y:auto;
+  font-family:var(--mono);font-size:12.5px;line-height:1.6;
+  display:flex;flex-direction:column;gap:.8rem;
+  scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.08) transparent;
+}
+.cli-body::-webkit-scrollbar{width:3px}
+.cli-body::-webkit-scrollbar-thumb{background:rgba(255,255,255,.08);border-radius:2px}
+.cli-line.system{color:rgba(255,255,255,.3);font-size:11px}
+.cli-line.prompt{color:rgba(255,255,255,.9)}
+.cli-line.prompt::before{content:'~/ammar $ ';color:rgba(255,255,255,.3)}
+.cli-line.response{color:#e1e1e6;padding-left:.5rem;border-left:1px solid rgba(255,255,255,.04)}
+.cli-chips{
+  display:flex;flex-wrap:wrap;gap:.5rem;
+  padding:.5rem 1.5rem;border-top:1px solid rgba(255,255,255,.025);flex-shrink:0;
+}
+.cli-chip{
+  font-family:var(--mono);font-size:10.5px;padding:5px 12px;
+  border:1px solid rgba(255,255,255,.05);border-radius:100px;
+  color:rgba(255,255,255,.45);cursor:pointer;background:transparent;
+  transition:color .2s,border-color .2s,background .2s;
+}
+.cli-chip:hover{color:rgba(255,255,255,.9);border-color:rgba(255,255,255,.2);background:rgba(255,255,255,.02)}
+.cli-input-row{
+  display:flex;align-items:center;padding:1rem 1.5rem;
+  border-top:1px solid rgba(255,255,255,.03);
+  background:rgba(0,0,0,.2);flex-shrink:0;
+}
+.cli-input-label{font-family:var(--mono);color:rgba(255,255,255,.3);font-size:12.5px;margin-right:8px;flex-shrink:0}
+.cli-input{
+  flex-grow:1;background:transparent;border:none;outline:none;
+  font-family:var(--mono);font-size:12.5px;color:#34d399;caret-color:#34d399;
+}
+.cli-input::placeholder{color:rgba(255,255,255,.18)}
+
+/* ── PERSONAL PAGE ── */
+.hero-description{font-size:15px;color:var(--muted);max-width:520px;line-height:1.8;text-align:center;margin-top:.5rem}
+.novapad-wrapper{background:rgba(255,255,255,0.015);border:1px solid var(--border2);border-radius:12px;padding:3rem 2rem;margin-bottom:4rem;display:flex;flex-direction:column;align-items:center;}
+.novapad-title{font-family:var(--mono);font-size:11px;color:var(--muted2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:2.5rem;text-align:center;}
+.novapad-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;max-width:500px;margin:0 auto;}
+.nova-pad{width:70px;height:70px;background:#0d0d12;border:1px solid rgba(255,255,255,.08);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:10px;color:rgba(255,255,255,.2);cursor:pointer;transition:all .1s ease;user-select:none;box-shadow:inset 0 0 10px rgba(0,0,0,.8),0 5px 15px rgba(0,0,0,.5);}
+.nova-pad:hover{background:#121218;border-color:rgba(255,255,255,.15);}
+.nova-pad.active{background:rgba(16,185,129,.15);border-color:#4ade80;color:#fff;box-shadow:inset 0 0 20px rgba(16,185,129,.4),0 0 20px rgba(16,185,129,.3);transform:scale(.95);}
+.creative-media-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2rem;margin-bottom:4rem}
+.media-slot{background:var(--rect-bg);border:1px solid var(--border2);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;transition:all .3s ease}
+.media-slot:hover{border-color:var(--border2);transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,0,0,.4);}
+.video-container-mock{width:100%;aspect-ratio:9/16;background:linear-gradient(180deg,#0a0a0c,#030305);position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;border-bottom:1px solid var(--border);cursor:pointer}
+.video-container-mock::after{content:'▶';font-size:20px;color:var(--muted);opacity:.5;width:50px;height:50px;display:flex;align-items:center;justify-content:center;border-radius:50%;border:1px solid var(--border);background:rgba(0,0,0,.4);transition:all .3s ease;}
+.media-slot:hover .video-container-mock::after{opacity:1;color:#fff;transform:scale(1.05);border-color:var(--muted);}
+.video-overlay-details{position:absolute;bottom:1.5rem;left:1.5rem;right:1.5rem;font-size:13px;color:var(--muted);text-shadow:0 2px 4px rgba(0,0,0,.8);}
+.video-overlay-details span{font-family:var(--mono);font-size:10px;text-transform:uppercase;display:block;color:var(--muted2);margin-bottom:.3rem;}
+.media-meta-box{padding:1.5rem;}
+.media-meta-box h4{font-family:var(--sans);font-size:14.5px;font-weight:400;color:var(--text);margin-bottom:.4rem;}
+.media-meta-box p{font-size:13.5px;color:var(--muted);}
+.log-entry{padding:2rem 0;border-bottom:1px solid var(--border);}
+.log-entry:first-of-type{border-top:1px solid var(--border);}
+.log-header{font-family:var(--mono);font-size:11px;color:var(--muted2);margin-bottom:1rem;display:flex;gap:15px;text-transform:uppercase;letter-spacing:.05em;}
+.log-body{font-size:14.5px;color:var(--muted);max-width:750px;line-height:1.8;}
+@media(max-width:768px){.creative-media-grid{grid-template-columns:1fr;}.novapad-grid{max-width:100%;}}
+
+/* ── MUSIC BAR ── */
+.music-bar{position:fixed;bottom:2rem;left:2rem;z-index:300;display:flex;align-items:center;gap:.5rem;background:var(--bg2);border:1px solid var(--border2);border-radius:6px;padding:.5rem .85rem;font-family:var(--mono);font-size:11px;color:var(--muted);cursor:pointer;transition:background .2s}
+.music-bar:hover{background:var(--bg3);color:var(--text)}
+.music-waves{display:flex;gap:2px;align-items:center;height:12px}
+.music-wave{width:2px;border-radius:1px;background:currentColor;animation:wave 1s ease infinite}
+.music-wave:nth-child(1){height:4px;animation-delay:0s}
+.music-wave:nth-child(2){height:9px;animation-delay:.1s}
+.music-wave:nth-child(3){height:12px;animation-delay:.2s}
+.music-wave:nth-child(4){height:7px;animation-delay:.3s}
+.music-wave:nth-child(5){height:4px;animation-delay:.4s}
+@keyframes wave{0%,100%{transform:scaleY(.35)}50%{transform:scaleY(1)}}
+.music-waves.paused .music-wave{animation-play-state:paused}
+
+/* ── FOOTER ── */
+footer{border-top:1px solid var(--border);padding:1.5rem var(--pad);display:flex;justify-content:space-between;align-items:center}
+footer p{font-family:var(--mono);font-size:10.5px;color:var(--muted2)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .chapter{grid-template-columns:140px 1fr;gap:2rem}
+  .skill-rect{grid-template-columns:130px 1fr}
+  .about-photo-section{grid-template-columns:220px 1fr;gap:2.5rem}
+}
+@media(max-width:768px){
+  nav{padding:.8rem 1.25rem}
+  .nav-tab{padding:.35rem .65rem;font-size:11px}
+  .nav-cta{display:none}
+  .section,.section-wide{padding:3.5rem 1.25rem}
+  .chapter{grid-template-columns:1fr;gap:.75rem}
+  .skill-rect{grid-template-columns:1fr}
+  .skill-rect-cat{border-right:none;border-bottom:1px solid var(--border);padding:.75rem 1.25rem}
+  .skill-rect-vals{padding:.75rem 1.25rem}
+  footer{padding:1.25rem;flex-direction:column;gap:.4rem;text-align:center}
+  .thoughts-wrap{padding:3rem 1.25rem}
+  .agent-overlay{padding:.75rem}
+  .about-photo-section{grid-template-columns:1fr;padding:0 1.25rem 3rem}
+  .landscape-section,.reels-section{padding:0 1.25rem 2.5rem}
+  .reels-grid{grid-template-columns:repeat(2,1fr)}
+  .music-bar{left:1rem;bottom:1rem}
+  .chat-float{bottom:1rem;right:1rem}
+  .novapad-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:480px){
+  .nav-tabs .nav-tab{padding:.3rem .5rem;font-size:10.5px}
+  .reels-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <span class="nav-logo" onclick="goHome()">Muhammad Ammar <em style="font-style:italic;color:var(--muted)">Jamali</em></span>
+  <div class="nav-tabs">
+    <div class="nav-tab active" onclick="switchPage('ai')" id="tab-ai">AI Engineer</div>
+    <div class="nav-tab" onclick="switchPage('web')" id="tab-web">Web Dev</div>
+    <div class="nav-tab" onclick="switchPage('exp')" id="tab-exp">Experience</div>
+    <div class="nav-tab" onclick="switchPage('about')" id="tab-about">About</div>
+    <div class="nav-tab" onclick="switchPage('personal')" id="tab-personal">Personal</div>
+  </div>
+  <div class="nav-right">
+    <button class="icon-btn" id="themeToggle" onclick="toggleTheme()" title="Toggle theme">◐</button>
+    <a href="mailto:ammarjamali2006@gmail.com" class="nav-cta">Email me</a>
+  </div>
+</nav>
+
+<div class="music-bar" onclick="toggleMusic()">
+  <span>♪</span>
+  <span id="musicLabel">Ambient</span>
+  <div class="music-waves paused" id="musicWaves">
+    <div class="music-wave"></div><div class="music-wave"></div>
+    <div class="music-wave"></div><div class="music-wave"></div>
+    <div class="music-wave"></div>
+  </div>
+</div>
+
+<div class="chat-float" onclick="openAgent()">
+  <div class="chat-float-dot"></div>
+  <span class="chat-float-label">ammar.ai ~</span>
+</div>
+
+<div class="page active" id="page-ai">
+  <div class="hero">
+    <p class="hero-eyebrow fadein"><span class="live-dot"></span>Available for AI roles · Remote &amp; Worldwide</p>
+    <h1 class="fadein">Building ML systems<br><em>that actually ship.</em></h1>
+    <p class="hero-bio fadein">AI Engineer specializing in end-to-end ML, deep learning &amp; NLP — fine-tuned transformers, production CNNs, live Hugging Face deployments. Ask my agent anything.</p>
+    <div class="hero-actions fadein">
+      <button class="btn-pill" onclick="openAgent()">Ask ammar.ai ✦</button>
+      <a href="mailto:ammarjamali2006@gmail.com" class="btn-pill ghost">ammarjamali2006@gmail.com</a>
+      <a href="https://github.com/Ammar2380" target="_blank" class="btn-pill ghost">GitHub ↗</a>
+    </div>
+  </div>
+  <hr class="div">
+  <div class="section">
+    <div class="sec-label">About</div>
+    <p class="prose">I'm Muhammad Ammar Jamali — an AI Engineer and ML Developer with hands-on experience designing and deploying end-to-end machine learning systems. My work spans NLP, computer vision, and predictive modeling, always with a bias toward shipping things that run in production — not just notebooks.</p>
+    <p class="prose" style="margin-top:1.1rem">Currently advancing through SMIT's Deep Learning program and PITP's Data Science initiative alongside a B.S. in Data Science at University of Sindh. Track record of measurable results: 97% F1 on a live NLP deployment, 87% accuracy on CIFAR-10, 88% F1 on clinical classification. Builds fast. Ships faster.</p>
+  </div>
+  <hr class="div">
+  <div class="section">
+    <div class="sec-label">Skills</div>
+    <div class="skill-rect-list">
+      <div class="skill-rect"><div class="skill-rect-cat">Languages</div><div class="skill-rect-vals">Python · SQL · HTML / CSS</div></div>
+      <div class="skill-rect"><div class="skill-rect-cat">Frameworks</div><div class="skill-rect-vals">TensorFlow · Keras · PyTorch · scikit-learn · Hugging Face Transformers</div></div>
+      <div class="skill-rect"><div class="skill-rect-cat">Deep Learning</div><div class="skill-rect-vals">ANN · CNN · Transfer Learning · DistilBERT Fine-tuning · NLP · Computer Vision</div></div>
+      <div class="skill-rect"><div class="skill-rect-cat">Data</div><div class="skill-rect-vals">Pandas · NumPy · Matplotlib · Seaborn · EDA · Feature Engineering</div></div>
+      <div class="skill-rect"><div class="skill-rect-cat">Deployment</div><div class="skill-rect-vals">Flask · Gradio · Streamlit · Hugging Face Spaces · OpenCV · Git &amp; GitHub</div></div>
+      <div class="skill-rect"><div class="skill-rect-cat">Concepts</div><div class="skill-rect-vals">Supervised / Unsupervised · Classification · Regression · Hyperparameter Tuning · Regularization</div></div>
+    </div>
+  </div>
+  <hr class="div">
+  
+  <div class="section">
+    <div class="sec-label">Projects</div>
+    <div class="project-grid">
+      
+      <div class="project-card">
+        <div class="project-visual">
+          <div class="code-canvas">
+            <div class="code-header"><div class="code-dot"></div><span>spamscan_transformer.py</span></div>
+            <div style="color: var(--cli-green);">>> Ingesting structural token tensor collations...</div>
+            <div style="color: var(--muted2); margin: 0.2rem 0;">[DistilBERT Training Loop Initialized]</div>
+            <div style="color: var(--muted);">Validation Metric Target achieved.<br>F1 Classification Output: <span style="color: #fff;">0.972</span><br>Inference Latency Reduction: <span style="color: #fff;">-40%</span><br>Live Predictions: <span style="color: #fff;">100+</span></div>
+          </div>
+        </div>
+        <div class="project-meta">
+          <span class="project-index">01 / NLP Transformers</span>
+          <h2 class="project-title">SpamScan</h2>
+          <p class="project-description">Fine-tuned DistilBERT on 5,500+ SMS/email messages for binary spam classification. Full pipeline — tokenization, data collation, evaluation metrics. Deployed on Hugging Face Spaces with real-time inference.</p>
+          <div class="project-tags"><span class="project-tag">NLP</span><span class="project-tag">DistilBERT</span><span class="project-tag">PyTorch</span><span class="project-tag">Hugging Face</span></div>
+          <div class="project-links"><a href="https://github.com/Ammar2380/SpamScan" target="_blank">GitHub ↗</a><a href="https://huggingface.co/spaces/AmmarJamali/spamscan" target="_blank">Demo ↗</a></div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-visual">
+          <div class="code-canvas">
+            <div class="code-header"><div class="code-dot"></div><span>cv_dataset_orchestrator.sh</span></div>
+            <div style="color: var(--muted2);">> Capturing array frames from CV2 camera sequence...</div>
+            <div style="color: var(--cli-green); margin-top: 0.3rem;">[Array parsing verified: 500 vectors mapped]</div>
+            <div style="color: var(--muted); font-size: 10px;">Automated train-test separation complete (80/20 partitioning) <br>Time Saved: -60%</div>
+          </div>
+        </div>
+        <div class="project-meta">
+          <span class="project-index">02 / Computer Vision</span>
+          <h2 class="project-title">Face Recognition CNN — Dataset Builder</h2>
+          <p class="project-description">Flask + OpenCV pipeline to capture, label, and organize face datasets of 200–500 images per person. Auto 80/20 train-test split with diversity enforcement, reducing data prep time by 60%.</p>
+          <div class="project-tags"><span class="project-tag">Computer Vision</span><span class="project-tag">Flask</span><span class="project-tag">OpenCV</span></div>
+          <div class="project-links"><a href="https://github.com/Ammar2380/cnn-face-recognition-flask" target="_blank">GitHub ↗</a></div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-visual">
+          <div class="code-canvas" style="display:flex; flex-direction:column; justify-content:center; gap:8px;">
+            <div style="font-size:10px; color:var(--muted2);">Topology: Conv2D -> MaxPool2D -> Dropout(0.5) -> Dense</div>
+            <div style="background: rgba(255,255,255,0.02); padding: 0.6rem; border-radius: 4px; border: 1px solid rgba(255,255,255,0.04);">
+                Output Metrics Explored: <span style="color:var(--cli-green);">Test Accuracy: 87%</span> (+22% baseline)
+            </div>
+            <div style="font-size:10px; color:var(--muted2);">Convergence verified within 15 epochs via Adam Optimizer.</div>
+          </div>
+        </div>
+        <div class="project-meta">
+          <span class="project-index">03 / Deep Learning</span>
+          <h2 class="project-title">CIFAR-10 Image Classification</h2>
+          <p class="project-description">Custom CNN from scratch on 60,000 images across 10 classes. Conv2D + MaxPooling → Dense with Dropout (0.5). Trained 30 epochs, validation loss converged in 15.</p>
+          <div class="project-tags"><span class="project-tag">CNN</span><span class="project-tag">TensorFlow</span><span class="project-tag">Keras</span></div>
+          <div class="project-links"><a href="https://github.com/Ammar2380" target="_blank">GitHub ↗</a></div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-visual">
+          <div class="code-canvas" style="display:flex; flex-direction:column; justify-content:center; align-items:center; gap:5px;">
+            <div style="font-size:13px; color:var(--text);">ANN Registry Network</div>
+            <div style="font-size:11px; color:var(--cli-green);">Diabetes Progression MSE: 2,900</div>
+            <div style="font-size:10px; color:var(--muted2);">Convergence Speed: +35% faster</div>
+          </div>
+        </div>
+        <div class="project-meta">
+          <span class="project-index">04 / Predictive Modeling</span>
+          <h2 class="project-title">Diabetes Progression Prediction</h2>
+          <p class="project-description">4-layer fully-connected ANN. StandardScaler normalization, Dropout (0.1), EarlyStopping (patience=20). Inverse-scaled predictions for interpretable output.</p>
+          <div class="project-tags"><span class="project-tag">ANN</span><span class="project-tag">Regression</span><span class="project-tag">Healthcare</span></div>
+          <div class="project-links"><a href="https://github.com/Ammar2380" target="_blank">GitHub ↗</a></div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-visual">
+          <div class="code-canvas" style="display:flex; flex-direction:column; justify-content:center; gap:8px;">
+            <div class="code-header"><div class="code-dot"></div><span>sklearn_ensemble.py</span></div>
+            <div style="font-size:11px; color:var(--muted);">Benchmarking: Logistic Regression | SVM | Random Forest</div>
+            <div style="font-size:13px; color:var(--text);">Target Acquired: Heart Disease Classification</div>
+            <div style="font-size:11px; color:var(--cli-green);">Performance Yield: 88% F1-score</div>
+          </div>
+        </div>
+        <div class="project-meta">
+          <span class="project-index">05 / Machine Learning Ensembles</span>
+          <h2 class="project-title">Heart Disease Prediction</h2>
+          <p class="project-description">Benchmarked 3 models on 303 clinical records. Feature engineering with correlation analysis to select top 10 predictive features.</p>
+          <div class="project-tags"><span class="project-tag">Classification</span><span class="project-tag">scikit-learn</span><span class="project-tag">ML</span></div>
+          <div class="project-links"><a href="https://github.com/Ammar2380" target="_blank">GitHub ↗</a></div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-visual">
+          <div class="code-canvas" style="display:flex; flex-direction:column; justify-content:center; gap:6px;">
+            <div style="font-size:11px; color:var(--muted2);">// Data Analytic Dashboard Matrices</div>
+            <div style="font-size:13px; color:var(--text);">Real Estate: 10,000+ Record Dataset</div>
+            <div style="font-size:11px; color:var(--muted);">Geographic Scope: 5 Major Pakistani Cities</div>
+          </div>
+        </div>
+        <div class="project-meta">
+          <span class="project-index">06 / Exploratory Data Analysis</span>
+          <h2 class="project-title">Pakistan Real Estate EDA</h2>
+          <p class="project-description">Exploratory analysis of 10,000+ property listings across 5 major Pakistani cities. Surfaced 3 key pricing trends with Pandas, Seaborn, and Matplotlib dashboards.</p>
+          <div class="project-tags"><span class="project-tag">EDA</span><span class="project-tag">Visualization</span><span class="project-tag">Pandas</span></div>
+          <div class="project-links"><a href="https://github.com/Ammar2380" target="_blank">GitHub ↗</a></div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-visual">
+          <div class="code-canvas" style="display:flex; flex-direction:column; justify-content:center; align-items:center;">
+            <div style="border: 1px solid rgba(255,255,255,0.06); padding: 1.2rem; background:rgba(0,0,0,0.3); border-radius:6px; font-size:12px; text-align:center;">
+                <span style="color:var(--text);">Supermarket Sales KPI</span><br>
+                <span style="color:var(--cli-green);">Top Product Line: 34% Total Revenue Insight</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-meta">
+          <span class="project-index">07 / Business Intelligence</span>
+          <h2 class="project-title">Supermarket Sales EDA Dashboard</h2>
+          <p class="project-description">Sales analysis of 1,000 transactions across 3 branches. Identified top product line generating 34% of total revenue via KPI dashboards using Pandas and Seaborn.</p>
+          <div class="project-tags"><span class="project-tag">EDA</span><span class="project-tag">KPI</span><span class="project-tag">Data Insights</span></div>
+          <div class="project-links"><a href="https://github.com/Ammar2380" target="_blank">GitHub ↗</a></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  
+  <hr class="div">
+  <div class="section">
+    <div class="sec-label">Education</div>
+    <div class="edu-rect-list">
+      <div class="edu-rect"><div><div class="edu-rect-name">B.S. in Data Science</div><div class="edu-rect-sub">University of Sindh, Jamshoro</div></div><div class="edu-rect-yr">2024 – 2027</div></div>
+      <div class="edu-rect"><div><div class="edu-rect-name">Deep Learning Program</div><div class="edu-rect-sub">SMIT — Saylani Mass IT Training, Hyderabad</div></div><div class="edu-rect-yr">Current</div></div>
+      <div class="edu-rect"><div><div class="edu-rect-name">Data Science Program</div><div class="edu-rect-sub">PITP — Government of Sindh Initiative</div></div><div class="edu-rect-yr">Current</div></div>
+    </div>
+  </div>
+  <hr class="div">
+  <div class="section">
+    <div class="sec-label">Contact</div>
+    <div class="ct-rect-list">
+      <div class="ct-rect"><span class="ct-rect-label">Email</span><a href="mailto:ammarjamali2006@gmail.com">ammarjamali2006@gmail.com</a></div>
+      <div class="ct-rect"><span class="ct-rect-label">Phone</span><a href="tel:+923123980106">+92 312 3980106</a></div>
+      <div class="ct-rect"><span class="ct-rect-label">GitHub</span><a href="https://github.com/Ammar2380" target="_blank">github.com/Ammar2380</a></div>
+      <div class="ct-rect"><span class="ct-rect-label">Hugging Face</span><a href="https://huggingface.co/spaces/AmmarJamali/spamscan" target="_blank">huggingface.co/AmmarJamali ↗</a></div>
+      <div class="ct-rect"><span class="ct-rect-label">LinkedIn</span><a href="https://www.linkedin.com/in/muhammad-ammar-jamali-4557b2366/" target="_blank">linkedin.com/in/muhammad-ammar-jamali ↗</a></div>
+      <div class="ct-rect"><span class="ct-rect-label">X / Twitter</span><a href="https://x.com/___Ammar___1" target="_blank">@___Ammar___1 ↗</a></div>
+    </div>
+  </div>
+  <footer><p>Muhammad Ammar · Jamali · AI Engineer</p><p>© 2026</p></footer>
+</div>
+
+<div class="page" id="page-web">
+  <div class="hero" style="padding-bottom:4rem">
+    <p class="hero-eyebrow fadein"><span class="live-dot"></span>Frontend · React.js · MERN Stack</p>
+    <h1 class="fadein">Building the web,<br><em>one interface at a time.</em></h1>
+    <p class="hero-bio fadein">React.js developer with proven client delivery — agency sites, product pages, AI SaaS, and portfolio builds. Responsive, component-driven, production-deployed on Vercel.</p>
+    <div class="hero-actions fadein">
+      <a href="mailto:ammarjamali2006@gmail.com" class="btn-pill">Get in touch ↗</a>
+      <a href="https://github.com/Ammar2380" target="_blank" class="btn-pill ghost">GitHub ↗</a>
+    </div>
+  </div>
+  <hr class="div">
+  <div class="section">
+    <div class="sec-label">Stack</div>
+    <div class="skill-rect-list">
+      <div class="skill-rect"><div class="skill-rect-cat">Frontend</div><div class="skill-rect-vals">React.js · JavaScript (ES6+) · HTML5 · CSS3</div></div>
+      <div class="skill-rect"><div class="skill-rect-cat">Design</div><div class="skill-rect-vals">Responsive &amp; Mobile-First · Component-Based Architecture · UI/UX</div></div>
+      <div class="skill-rect"><div class="skill-rect-cat">Tools</div><div class="skill-rect-vals">Git &amp; GitHub · Vercel · VS Code</div></div>
+      <div class="skill-rect"><div class="skill-rect-cat">Data</div><div class="skill-rect-vals">Python · Pandas · NumPy · Seaborn · Matplotlib</div></div>
+    </div>
+  </div>
+  <hr class="div">
+  
+  <div class="section">
+    <div class="sec-label">Client Work & Platforms</div>
+    <div class="project-grid">
+
+      <div class="project-card">
+        <div class="project-visual">
+          <div class="code-canvas" style="display:flex; flex-direction:column; justify-content:center; gap:8px;">
+            <div style="font-size:11px; color:var(--muted2);">// Agency Ingress Core</div>
+            <div style="font-size:14px; color:var(--text); font-weight:400; letter-spacing:-0.01em;">TEAM URAAN ARCHITECTURE</div>
+            <div style="font-size:11px; color:var(--muted);">Creative Agency UI Deploy</div>
+          </div>
+        </div>
+        <div class="project-meta">
+          <span class="project-index">01 / Corporate Deployments</span>
+          <h2 class="project-title">Team Uraan</h2>
+          <p class="project-description">Full website for a creative agency. Modern layout, service sections, mobile-first responsive design built in React.</p>
+          <div class="project-tags"><span class="project-tag">React.js</span><span class="project-tag">Responsive</span><span class="project-tag">Agency</span></div>
+          <div class="project-links"><a href="https://teamuraan.vercel.app/" target="_blank">View Site ↗</a></div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-visual">
+          <div class="code-canvas" style="display:flex; flex-direction:column; justify-content:center; align-items:center;">
+            <div style="border: 1px solid rgba(255,255,255,0.06); padding: 1.2rem; background:rgba(0,0,0,0.3); border-radius:6px; font-size:12px;">
+                <span style="color:var(--cli-green);">hayviral_saas_portal.jsx</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-meta">
+          <span class="project-index">02 / SaaS Platforms</span>
+          <h2 class="project-title">HayViral AI SaaS</h2>
+          <p class="project-description">Company website for an AI SaaS platform. Clean UI with animated sections and clear product messaging, continuously integrated via Vercel.</p>
+          <div class="project-tags"><span class="project-tag">React.js</span><span class="project-tag">SaaS</span><span class="project-tag">AI</span></div>
+          <div class="project-links"><a href="https://roadie-learner.lovable.app/" target="_blank">View Site ↗</a></div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-visual">
+          <div class="code-canvas" style="display:flex; flex-direction:column; justify-content:center; gap:8px;">
+            <div style="font-size:11px; color:var(--muted2);">// Freelance Client Render</div>
+            <div style="font-size:14px; color:var(--text); font-weight:400;">Jawad Ahmed Portfolio</div>
+            <div style="font-size:11px; color:var(--muted);">Custom Smooth Transitions</div>
+          </div>
+        </div>
+        <div class="project-meta">
+          <span class="project-index">03 / Personal Branding</span>
+          <h2 class="project-title">Jawad Ahmed — Portfolio</h2>
+          <p class="project-description">Personal portfolio website for a client. Custom design, smooth transitions, fully responsive layout built for conversion and aesthetic pacing.</p>
+          <div class="project-tags"><span class="project-tag">React.js</span><span class="project-tag">Portfolio</span></div>
+          <div class="project-links"><a href="https://jawad-ahmed-iixx.vercel.app/" target="_blank">View Site ↗</a></div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-visual">
+          <div class="code-canvas" style="display:flex; flex-direction:column; justify-content:center; align-items:center; gap:5px;">
+            <div style="font-size:13px; color:var(--text);">Habit Tracker Application</div>
+            <div style="font-size:11px; color:var(--cli-green);">Hackathon Project Execution</div>
+          </div>
+        </div>
+        <div class="project-meta">
+          <span class="project-index">04 / Logic & Tracking</span>
+          <h2 class="project-title">Habitanova</h2>
+          <p class="project-description">Habit-tracking application built under pressure at a hackathon. React, component architecture, clean UX.</p>
+          <div class="project-tags"><span class="project-tag">React.js</span><span class="project-tag">Hackathon</span></div>
+          <div class="project-links"><a href="https://habita-nova.vercel.app/" target="_blank">View Site ↗</a></div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-visual">
+          <div class="code-canvas" style="display:flex; flex-direction:column; justify-content:center; gap:8px;">
+            <div style="font-size:11px; color:var(--muted2);">// Product Showcase Logic</div>
+            <div style="font-size:14px; color:var(--text); font-weight:400;">Gulacci — Shoes Brand</div>
+            <div style="font-size:11px; color:var(--muted);">E-commerce Grid Layout</div>
+          </div>
+        </div>
+        <div class="project-meta">
+          <span class="project-index">05 / E-Commerce Systems</span>
+          <h2 class="project-title">Gulacci</h2>
+          <p class="project-description">Full brand website for a shoes label. Product showcase, responsive grid layout, modern minimalist design built for conversions.</p>
+          <div class="project-tags"><span class="project-tag">React.js</span><span class="project-tag">E-commerce</span><span class="project-tag">Branding</span></div>
+          <div class="project-links"><a href="https://github.com/Ammar2380/Gulacci" target="_blank">GitHub ↗</a></div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-visual">
+          <div class="code-canvas" style="display:flex; flex-direction:column; justify-content:center; align-items:center;">
+            <div style="border: 1px solid rgba(255,255,255,0.06); padding: 1.2rem; background:rgba(0,0,0,0.3); border-radius:6px; font-size:12px;">
+                <span style="color:var(--text);">Pixels Portfolio System</span><br>
+                <span style="color:var(--muted2);">Visual Grid Engine</span>
+            </div>
+          </div>
+        </div>
+        <div class="project-meta">
+          <span class="project-index">06 / Visual Architecture</span>
+          <h2 class="project-title">Pixels — Creative Portfolio</h2>
+          <p class="project-description">A visual creative portfolio site. Clean grid-based layout, strong typography, built for showcasing visual work seamlessly.</p>
+          <div class="project-tags"><span class="project-tag">React.js</span><span class="project-tag">Portfolio</span><span class="project-tag">Design</span></div>
+          <div class="project-links"><a href="https://pixels-sigma-drab.vercel.app/" target="_blank">View Site ↗</a></div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-visual">
+          <div class="code-canvas" style="display:flex; flex-direction:column; justify-content:center; gap:8px;">
+            <div class="code-header"><div class="code-dot"></div><span>nasa_api_socket.js</span></div>
+            <div style="font-size:11px; color:var(--muted);">Fetching live coordinates...</div>
+            <div style="font-size:13px; color:var(--text);">ISS Orbital Position Synced</div>
+            <div style="font-size:11px; color:var(--cli-green);">Real-time map rendering online.</div>
+          </div>
+        </div>
+        <div class="project-meta">
+          <span class="project-index">07 / API Integration</span>
+          <h2 class="project-title">ISS Live Tracker</h2>
+          <p class="project-description">Live International Space Station tracker. Real-time orbital position updates via NASA's open API, interactive map visualization, live coordinate display.</p>
+          <div class="project-tags"><span class="project-tag">API Integration</span><span class="project-tag">Real-time</span><span class="project-tag">JavaScript</span></div>
+          <div class="project-links"><a href="https://iss-live-tracker-two.vercel.app/" target="_blank">Live ↗</a><a href="https://github.com/Ammar2380/ISS-live-tracker" target="_blank">GitHub ↗</a></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="div">
+  <div class="section">
+    <div class="sec-label">Contact</div>
+    <div class="ct-rect-list">
+      <div class="ct-rect"><span class="ct-rect-label">Email</span><a href="mailto:ammarjamali2006@gmail.com">ammarjamali2006@gmail.com</a></div>
+      <div class="ct-rect"><span class="ct-rect-label">GitHub</span><a href="https://github.com/Ammar2380" target="_blank">github.com/Ammar2380</a></div>
+      <div class="ct-rect"><span class="ct-rect-label">LinkedIn</span><a href="https://www.linkedin.com/in/muhammad-ammar-jamali-4557b2366/" target="_blank">linkedin.com/in/muhammad-ammar-jamali ↗</a></div>
+      <div class="ct-rect"><span class="ct-rect-label">X / Twitter</span><a href="https://x.com/___Ammar___1" target="_blank">@___Ammar___1 ↗</a></div>
+    </div>
+  </div>
+  <footer><p>Muhammad Ammar · Jamali · Web Dev</p><p>© 2026</p></footer>
+</div>
+
+<div class="page" id="page-exp">
+  <div style="padding-top:6rem"></div>
+  <div class="section">
+    <div class="sec-label">Work Experience</div>
+    <div class="timeline-container">
+      
+      <div class="timeline-node">
+        <div class="node-date">2025 – JAN 2026</div>
+        <h3 class="node-role">Frontend Web Engineer / UI Developer</h3>
+        <div class="node-company">HayViral — AI SaaS Company · Hyderabad, Pakistan</div>
+        <div class="node-summary">
+          <p>Built and shipped production React.js web applications for the company and its clients. Delivered mobile-first responsive UIs for an AI SaaS platform (HayViral) and a creative agency website (Team Uraan).</p>
+          <p>Worked directly with client briefs and deployed all projects on Vercel. Hands-on experience in component architecture, cross-browser compatibility, and production deployment workflows.</p>
+        </div>
+      </div>
+
+      <div class="timeline-node">
+        <div class="node-date">Freelance</div>
+        <h3 class="node-role">Frontend Developer</h3>
+        <div class="node-company">Independent · Remote</div>
+        <div class="node-summary">
+          <p>Designed and built custom web experiences for individual clients. Delivered Jawad Ahmed's personal portfolio (custom design, smooth transitions, fully responsive).</p>
+          <p>Built Habitanova — a habit-tracking web app developed under hackathon conditions using React with clean component architecture and UX.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <hr class="div">
+  <div class="section">
+    <div class="sec-label">Education &amp; Training</div>
+    <div class="edu-rect-list">
+      <div class="edu-rect"><div><div class="edu-rect-name">B.S. in Data Science</div><div class="edu-rect-sub">University of Sindh, Jamshoro</div></div><div class="edu-rect-yr">2024 – 2027</div></div>
+      <div class="edu-rect"><div><div class="edu-rect-name">Deep Learning Program</div><div class="edu-rect-sub">SMIT — Saylani Mass IT Training, Hyderabad</div></div><div class="edu-rect-yr">Current</div></div>
+      <div class="edu-rect"><div><div class="edu-rect-name">Data Science Program</div><div class="edu-rect-sub">PITP — Government of Sindh Initiative</div></div><div class="edu-rect-yr">Current</div></div>
+    </div>
+  </div>
+  <hr class="div">
+  <div class="section">
+    <div class="sec-label">Contact</div>
+    <div class="ct-rect-list">
+      <div class="ct-rect"><span class="ct-rect-label">Email</span><a href="mailto:ammarjamali2006@gmail.com">ammarjamali2006@gmail.com</a></div>
+      <div class="ct-rect"><span class="ct-rect-label">GitHub</span><a href="https://github.com/Ammar2380" target="_blank">github.com/Ammar2380</a></div>
+      <div class="ct-rect"><span class="ct-rect-label">LinkedIn</span><a href="https://www.linkedin.com/in/muhammad-ammar-jamali-4557b2366/" target="_blank">linkedin.com/in/muhammad-ammar-jamali ↗</a></div>
+      <div class="ct-rect"><span class="ct-rect-label">X / Twitter</span><a href="https://x.com/___Ammar___1" target="_blank">@___Ammar___1 ↗</a></div>
+    </div>
+  </div>
+  <footer><p>Muhammad Ammar · Jamali · Experience</p><p>© 2026</p></footer>
+</div>
+
+<div class="page" id="page-about">
+  <div class="about-page-hero">
+    <p class="hero-eyebrow" style="margin-bottom:1.5rem"><span class="live-dot"></span>Muhammad Ammar · Jamali · Pakistan</p>
+    <h2>The person<br>behind the <em>models.</em></h2>
+    <p style="margin-top:1rem">An AI Engineer who builds machines that learn and ships code that runs in production. Based in Pakistan, working with the world.</p>
+  </div>
+  <hr class="div">
+
+  <div class="about-photo-section">
+    <div class="photo-frame" id="photoFrame" onclick="document.getElementById('photoInput').click()">
+      <img id="photoImg" src="" alt="" style="display:none">
+      <div class="photo-frame-placeholder" id="photoPlaceholder">
+        <input type="file" id="photoInput" accept="image/*" onchange="loadPhoto(event)" style="position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%">
+        <div class="photo-frame-icon">◻</div>
+        <div class="photo-frame-label">Your Photo</div>
+        <div class="photo-frame-sub">click to upload</div>
+      </div>
+    </div>
+    <div class="about-bio-text">
+      <div class="sec-label" style="margin-bottom:1.5rem">Origin</div>
+      <p class="prose">I grew up in Pakistan — a place that taught me to be resourceful, move fast, and never wait for perfect conditions. In a Jamali household, ambition was expected and consistency was the standard. Both shaped how I work: with urgency, with focus, and with a strong belief that things should actually get done.</p>
+      <p class="prose" style="margin-top:1.25rem">My first real encounter with computers wasn't about games — it was about the realization that the screen was a window into a different kind of thinking. By secondary school, I knew I wanted to build things that think, not just use things that run.</p>
+    </div>
+  </div>
+
+  <div class="about-chapters">
+    <div class="chapter">
+      <div class="chapter-label">the turn</div>
+      <p class="chapter-text">When I discovered machine learning, something shifted. The idea that you could show a model enough examples and it would learn the pattern on its own — that felt like real engineering magic. I enrolled in Data Science at University of Sindh in 2024, simultaneously joined SMIT's Deep Learning program and PITP's Data Science program, and started building immediately. SpamScan was the proof of concept: DistilBERT fine-tuned to 97% F1, deployed live on Hugging Face Spaces, serving real predictions. That changed everything.</p>
+    </div>
+    <div class="chapter">
+      <div class="chapter-label">the work</div>
+      <p class="chapter-text">I've fine-tuned transformers, designed CNNs from scratch, built data pipelines on tens of thousands of records, and shipped React.js applications for real paying clients at HayViral. Across AI and web, the standard is the same: does it work in production? Every project added something the lecture notes didn't cover. I measure progress by what ships, not what looks good in a notebook.</p>
+    </div>
+    <div class="chapter">
+      <div class="chapter-label">now</div>
+      <p class="chapter-text">I'm actively building in public, studying across three programs simultaneously, and genuinely driven by where all of this is heading. I want to work on AI systems that matter — not toy demos, but production systems that change how someone does their job or lives their day. Open to AI Engineer roles globally, remote or on-site. If you've read this far, we should talk.</p>
+    </div>
+  </div>
+
+  <hr class="div">
+  <div class="section">
+    <div class="sec-label">Contact</div>
+    <div class="ct-rect-list">
+      <div class="ct-rect"><span class="ct-rect-label">Email</span><a href="mailto:ammarjamali2006@gmail.com">ammarjamali2006@gmail.com</a></div>
+      <div class="ct-rect"><span class="ct-rect-label">GitHub</span><a href="https://github.com/Ammar2380" target="_blank">github.com/Ammar2380</a></div>
+      <div class="ct-rect"><span class="ct-rect-label">LinkedIn</span><a href="https://www.linkedin.com/in/muhammad-ammar-jamali-4557b2366/" target="_blank">linkedin.com/in/muhammad-ammar-jamali ↗</a></div>
+      <div class="ct-rect"><span class="ct-rect-label">X / Twitter</span><a href="https://x.com/___Ammar___1" target="_blank">@___Ammar___1 ↗</a></div>
+    </div>
+  </div>
+  <footer><p>Muhammad Ammar · Jamali</p><p>© 2026</p></footer>
+</div>
+
+<div class="page" id="page-personal">
+  <div class="hero" style="min-height:50vh;padding-bottom:2rem">
+    <h1 class="fadein" style="font-family:var(--serif);font-size:clamp(2.5rem,6vw,5rem);font-weight:400;line-height:1.05;letter-spacing:-.025em;margin-bottom:1.25rem">Creative labs, media mixing,<br><em style="color:var(--muted)">and code playground.</em></h1>
+    <p class="hero-description fadein">An unfiltered sandbox of side interests, interactive experiments, video work, and system logs.</p>
+  </div>
+
+  <hr class="div">
+
+  <div class="section">
+    <div class="sec-label">Interactive Synthesis</div>
+    <div class="novapad-wrapper">
+      <div class="novapad-title">NovaPad: C-Minor Pentatonic Matrix</div>
+      <p style="font-size:12px;color:var(--muted);margin-bottom:2rem;text-align:center;font-family:var(--mono)">Press 1–4 · Q–R · A–F to trigger generative audio · hold to sustain</p>
+      <div class="novapad-grid" id="novaGrid">
+        <div class="nova-pad" data-pitch="261.63" data-trigger="1">1<br><span style="opacity:.4;font-size:8px">C4</span></div>
+        <div class="nova-pad" data-pitch="311.13" data-trigger="2">2<br><span style="opacity:.4;font-size:8px">Eb4</span></div>
+        <div class="nova-pad" data-pitch="349.23" data-trigger="3">3<br><span style="opacity:.4;font-size:8px">F4</span></div>
+        <div class="nova-pad" data-pitch="392.00" data-trigger="4">4<br><span style="opacity:.4;font-size:8px">G4</span></div>
+        <div class="nova-pad" data-pitch="466.16" data-trigger="q">Q<br><span style="opacity:.4;font-size:8px">Bb4</span></div>
+        <div class="nova-pad" data-pitch="523.25" data-trigger="w">W<br><span style="opacity:.4;font-size:8px">C5</span></div>
+        <div class="nova-pad" data-pitch="622.25" data-trigger="e">E<br><span style="opacity:.4;font-size:8px">Eb5</span></div>
+        <div class="nova-pad" data-pitch="698.46" data-trigger="r">R<br><span style="opacity:.4;font-size:8px">F5</span></div>
+        <div class="nova-pad" data-pitch="783.99" data-trigger="a">A<br><span style="opacity:.4;font-size:8px">G5</span></div>
+        <div class="nova-pad" data-pitch="932.33" data-trigger="s">S<br><span style="opacity:.4;font-size:8px">Bb5</span></div>
+        <div class="nova-pad" data-pitch="1046.50" data-trigger="d">D<br><span style="opacity:.4;font-size:8px">C6</span></div>
+        <div class="nova-pad" data-pitch="1244.51" data-trigger="f">F<br><span style="opacity:.4;font-size:8px">Eb6</span></div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <div class="section">
+    <div class="sec-label">Video Architecture — High-Retention Reels</div>
+    <div class="creative-media-grid" id="reelsGrid">
+      <div class="media-slot" id="reel-slot-1">
+        <div class="video-container-mock" id="reel-frame-1" onclick="document.getElementById('reel-input-1').click()">
+          <input type="file" id="reel-input-1" accept="image/*,video/*" style="display:none" onchange="loadReel(event,1)">
+          <div class="video-overlay-details"><span>Reel 01</span>click to upload</div>
+        </div>
+        <div class="media-meta-box"><h4>Social Media Content</h4><p>High-energy pacing, custom audio cues, precise transitions and engagement-driven subtitle animations.</p></div>
+      </div>
+      <div class="media-slot" id="reel-slot-2">
+        <div class="video-container-mock" id="reel-frame-2" onclick="document.getElementById('reel-input-2').click()">
+          <input type="file" id="reel-input-2" accept="image/*,video/*" style="display:none" onchange="loadReel(event,2)">
+          <div class="video-overlay-details"><span>Reel 02</span>click to upload</div>
+        </div>
+        <div class="media-meta-box"><h4>Audio-Visual Sync</h4><p>Audio mixing that maps sound drops directly to frame cuts to maximise retention.</p></div>
+      </div>
+      <div class="media-slot" id="reel-slot-3">
+        <div class="video-container-mock" id="reel-frame-3" onclick="document.getElementById('reel-input-3').click()">
+          <input type="file" id="reel-input-3" accept="image/*,video/*" style="display:none" onchange="loadReel(event,3)">
+          <div class="video-overlay-details"><span>Reel 03</span>click to upload</div>
+        </div>
+        <div class="media-meta-box"><h4>Experimental Motion</h4><p>Independent multi-track overlays focusing on pacing variations and visual storytelling.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="div">
+
+  <div class="section">
+    <div class="sec-label">Theoretical Tracking Logs</div>
+    <div class="log-entry">
+      <div class="log-header"><span>Log 01</span><span>Telemetry &amp; Missile Systems</span></div>
+      <p class="log-body">Fascinated by real-world system constraints. Beyond pure code frameworks, I track defense and aerospace system designs — specifically auditing historical telemetry logic and construction constraints behind systems like Tomahawk and Babur rockets.</p>
+    </div>
+    <div class="log-entry">
+      <div class="log-header"><span>Log 02</span><span>Simulation Mechanics</span></div>
+      <p class="log-body">Interested in state-tracking constraints within driving and open-world simulator games. Studying physics modeling configurations like those seen in Motor Town ensures a strong appreciation for mathematical translation in real-time interfaces.</p>
+    </div>
+    <div class="log-entry">
+      <div class="log-header"><span>Log 03</span><span>The Craft of Engineering</span></div>
+      <p class="log-body">I want to engineer AI paradigms that feel indistinguishable from magic to the end user, while remaining boringly stable and heavily documented underneath. That specific gap — between perceived sorcery and rigorous mechanical reality — is where the actual craft lives.</p>
+    </div>
+  </div>
+
+  <footer><p>Muhammad Ammar · Jamali</p><p>© 2026</p></footer>
+</div>
+
+<div class="agent-overlay" id="agentOverlay" onclick="if(event.target===this) closeAgent()">
+  <div class="agent-panel" id="agentPanel">
+    <div class="cli-topbar">
+      <div class="cli-dots">
+        <div class="cli-dot close" onclick="closeAgent()"></div>
+        <div class="cli-dot min"></div>
+        <div class="cli-dot max"></div>
+      </div>
+      <div class="cli-title-text">ammar.ai — Autonomous Interface</div>
+      <div></div>
+    </div>
+    <div class="cli-body" id="cliBody"></div>
+    <div class="cli-chips" id="chips">
+      <button class="cli-chip" onclick="cliAsk('List AI systems built')">Core ML Systems</button>
+      <button class="cli-chip" onclick="cliAsk('SpamScan metrics')">SpamScan Details</button>
+      <button class="cli-chip" onclick="cliAsk('Availability status')">Availability</button>
+      <button class="cli-chip" onclick="cliAsk('best ML result?')">Best Result</button>
+    </div>
+    <div class="cli-input-row">
+      <span class="cli-input-label">~/ammar $</span>
+      <input type="text" class="cli-input" id="cliInput" placeholder="Enter inquiry parameter..." onkeydown="if(event.key==='Enter') sendCli()">
+    </div>
+  </div>
+</div>
+
+<script>
+// ── THEME ──
+function toggleTheme(){
+  const h=document.documentElement
+  const t=h.getAttribute('data-theme')==='dark'?'light':'dark'
+  h.setAttribute('data-theme',t)
+  document.getElementById('themeToggle').textContent=t==='dark'?'◐':'◑'
+}
+
+// ── PAGES ──
+function switchPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'))
+  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'))
+  document.getElementById('page-'+id).classList.add('active')
+  document.getElementById('tab-'+id).classList.add('active')
+  window.scrollTo({top:0,behavior:'smooth'})
+}
+function goHome(){switchPage('ai')}
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',window.scrollY>40))
+
+// ── MUSIC ──
+let audioCtx=null,musicPlaying=false
+function toggleMusic(){
+  if(!audioCtx){
+    audioCtx=new(window.AudioContext||window.webkitAudioContext)()
+    const master=audioCtx.createGain();master.gain.value=.08;master.connect(audioCtx.destination)
+    ;[55,82,110,165,220].forEach(f=>{
+      const o=audioCtx.createOscillator(),g=audioCtx.createGain(),flt=audioCtx.createBiquadFilter()
+      o.type='sine';o.frequency.value=f;flt.type='lowpass';flt.frequency.value=350;g.gain.value=.12
+      o.connect(flt);flt.connect(g);g.connect(master);o.start()
+    })
+  }
+  if(!musicPlaying){
+    if(audioCtx.state==='suspended')audioCtx.resume()
+    musicPlaying=true
+    document.getElementById('musicLabel').textContent='Playing'
+    document.getElementById('musicWaves').classList.remove('paused')
+  }else{
+    audioCtx.suspend();musicPlaying=false
+    document.getElementById('musicLabel').textContent='Ambient'
+    document.getElementById('musicWaves').classList.add('paused')
+  }
+}
+
+// ── PHOTO / LANDSCAPE / REEL UPLOAD ──
+function loadPhoto(e){
+  const f=e.target.files[0];if(!f)return
+  const r=new FileReader();r.onload=ev=>{
+    document.getElementById('photoImg').src=ev.target.result
+    document.getElementById('photoImg').style.display='block'
+    document.getElementById('photoPlaceholder').style.display='none'
+  };r.readAsDataURL(f)
+}
+function loadLandscape(e){
+  const f=e.target.files[0];if(!f)return
+  const r=new FileReader();r.onload=ev=>{
+    const img=document.getElementById('landscapeImg')
+    img.src=ev.target.result;img.style.display='block'
+    const ph=document.getElementById('landscapePlaceholder')
+    if(ph)ph.style.display='none'
+  };r.readAsDataURL(f)
+}
+function loadReel(e,n){
+  const f=e.target.files[0];if(!f)return
+  const frame=document.getElementById('reel-frame-'+n)
+  const overlay=frame.querySelector('.video-overlay-details')
+  frame.querySelectorAll('img,video').forEach(el=>el.remove())
+  if(f.type.startsWith('video/')){
+    const vid=document.createElement('video')
+    vid.src=URL.createObjectURL(f);vid.loop=true;vid.muted=true;vid.playsInline=true
+    vid.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1'
+    frame.insertBefore(vid,frame.firstChild)
+    if(overlay){overlay.innerHTML='<span>Reel 0'+n+'</span>hover to play';overlay.style.zIndex='2'}
+    frame.addEventListener('mouseenter',()=>vid.play(),{passive:true})
+    frame.addEventListener('mouseleave',()=>vid.pause(),{passive:true})
+  } else {
+    const r=new FileReader();r.onload=ev=>{
+      const img=document.createElement('img')
+      img.src=ev.target.result
+      img.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1'
+      frame.insertBefore(img,frame.firstChild)
+      if(overlay){overlay.innerHTML='<span>Reel 0'+n+'</span>uploaded';overlay.style.zIndex='2'}
+    };r.readAsDataURL(f)
+  }
+}
+
+// ── AI AGENT ──
+let cliInitialized = false
+function openAgent(){
+  document.getElementById('agentOverlay').classList.add('open')
+  if(!cliInitialized){
+    cliPrint('system','Initializing ammar.ai intelligence matrix...')
+    setTimeout(()=>cliPrint('system','Connection established. I know Ammar deeply — his projects, stack, and availability. Ready for inquiry parameters.'),650)
+    cliInitialized=true
+  }
+  setTimeout(()=>document.getElementById('cliInput').focus(),300)
+}
+function closeAgent(){document.getElementById('agentOverlay').classList.remove('open')}
+function closeAgentOutside(e){if(e.target===document.getElementById('agentOverlay'))closeAgent()}
+
+function cliPrint(type,text){
+  const b=document.getElementById('cliBody')
+  const d=document.createElement('div');d.className='cli-line '+type
+  d.textContent=text;b.appendChild(d);b.scrollTop=b.scrollHeight
+  return d
+}
+function cliAsk(q){
+  document.getElementById('chips').style.display='none'
+  cliPrint('prompt',q)
+  fetchCli(q)
+}
+function askChip(el){cliAsk(el.textContent)}
+function sendCli(){
+  const inp=document.getElementById('cliInput');const q=inp.value.trim()
+  if(!q)return;inp.value=''
+  document.getElementById('chips').style.display='none'
+  cliPrint('prompt',q)
+  fetchCli(q)
+}
+
+const SYSTEM=`You are Ammar Jamali's personal AI agent on his portfolio website. Answer as a CLI assistant. Keep answers short, punchy, plain text only. No markdown, no bullet points, no headers — just plain sentences with line breaks. Highlight key numbers and tech names.
+
+IDENTITY: Muhammad Ammar Jamali. AI Engineer & ML Developer. Also a React.js Frontend Developer. Based in Hyderabad, Pakistan. Available for remote/on-site AI roles worldwide.
+AI/ML: SpamScan (DistilBERT fine-tuned, 97% F1, -40% latency vs TF-IDF, 100+ live predictions on HuggingFace Spaces), Face Recognition CNN Builder (Flask+OpenCV, -60% data prep time), CIFAR-10 CNN (87% acc, +22% over baseline, TensorFlow/Keras), Diabetes ANN (4-layer, MSE 2900, 35% faster convergence), Heart Disease (88% F1, 3 models benchmarked), Pakistan Real Estate EDA (10k+ listings, 5 cities), Supermarket Sales EDA (34% revenue insight).
+WEB at HayViral (2025–Jan 2026): Team Uraan creative agency, HayViral AI SaaS. Freelance: Jawad Ahmed portfolio, Habitanova hackathon, Gulacci shoes brand, Pixels creative portfolio, ISS Live Tracker (NASA API). Stack: React.js, JS ES6+, HTML5/CSS3, Vercel.
+SKILLS: Python, TensorFlow, Keras, PyTorch, scikit-learn, HuggingFace Transformers, Pandas, NumPy, Matplotlib, Seaborn, Flask, Gradio, Streamlit, OpenCV, Git/GitHub, React.js.
+EDUCATION: B.S. Data Science Uni of Sindh (2024-2027), SMIT Deep Learning (current), PITP Data Science (current).
+CONTACT: ammarjamali2006@gmail.com, +92 312 3980106, github.com/Ammar2380, linkedin.com/in/muhammad-ammar-jamali-4557b2366, x.com/___Ammar___1. WEB PROJECTS ALSO: Gulacci shoes brand site (github.com/Ammar2380/Gulacci), Pixels portfolio (pixels-sigma-drab.vercel.app), ISS Live Tracker (github.com/Ammar2380/ISS-live-tracker).
+Keep answers under 80 words.`
+
+async function fetchCli(q){
+  const thinking=cliPrint('system','...')
+  try{
+    const r=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:350,system:SYSTEM,messages:[{role:'user',content:q}]})
+    })
+    const data=await r.json()
+    thinking.remove()
+    const raw=data.content?.[0]?.text||"couldn't reach server. email ammarjamali2006@gmail.com"
+    const lines=raw.split('\n').filter(l=>l.trim())
+    let lineIdx=0
+    function printNextLine(){
+      if(lineIdx>=lines.length)return
+      const d=document.createElement('div');d.className='cli-line response'
+      document.getElementById('cliBody').appendChild(d)
+      const text=lines[lineIdx++];let i=0
+      const iv=setInterval(()=>{
+        d.textContent=text.slice(0,++i)
+        document.getElementById('cliBody').scrollTop=document.getElementById('cliBody').scrollHeight
+        if(i>=text.length){clearInterval(iv);setTimeout(printNextLine,80)}
+      },12)
+    }
+    printNextLine()
+  }catch{
+    thinking.remove()
+    cliPrint('system','error — try emailing ammarjamali2006@gmail.com')
+  }
+}
+
+// ── NOVAPAD ──
+let novaSynth=null
+const activePads={}
+function initNova(){if(!novaSynth)novaSynth=new(window.AudioContext||window.webkitAudioContext)()}
+function strikePad(freq,el){
+  initNova()
+  if(novaSynth.state==='suspended')novaSynth.resume()
+  if(activePads[freq])return
+  el.classList.add('active')
+  const o1=novaSynth.createOscillator(),o2=novaSynth.createOscillator(),env=novaSynth.createGain()
+  o1.type='sine';o1.frequency.value=freq
+  o2.type='triangle';o2.frequency.value=freq*1.002
+  o1.connect(env);o2.connect(env);env.connect(novaSynth.destination)
+  env.gain.setValueAtTime(0,novaSynth.currentTime)
+  env.gain.linearRampToValueAtTime(.18,novaSynth.currentTime+.04)
+  o1.start();o2.start()
+  activePads[freq]={o1,o2,env,el}
+}
+function releasePad(freq){
+  const n=activePads[freq];if(!n)return
+  n.env.gain.setValueAtTime(n.env.gain.value,novaSynth.currentTime)
+  n.env.gain.exponentialRampToValueAtTime(.0001,novaSynth.currentTime+.85)
+  n.o1.stop(novaSynth.currentTime+.85);n.o2.stop(novaSynth.currentTime+.85)
+  n.el.classList.remove('active');delete activePads[freq]
+}
+document.querySelectorAll('.nova-pad').forEach(p=>{
+  const f=parseFloat(p.getAttribute('data-pitch'))
+  p.addEventListener('mousedown',e=>{e.preventDefault();strikePad(f,p)})
+  p.addEventListener('mouseup',()=>releasePad(f))
+  p.addEventListener('mouseleave',()=>releasePad(f))
+  p.addEventListener('touchstart',e=>{e.preventDefault();strikePad(f,p)},{passive:false})
+  p.addEventListener('touchend',()=>releasePad(f))
+})
+window.addEventListener('keydown',e=>{
+  if(e.target.tagName==='INPUT')return
+  if(e.key==='Escape'){closeAgent();return}
+  const pad=document.querySelector(`.nova-pad[data-trigger="${e.key.toLowerCase()}"]`)
+  if(pad&&!e.repeat)strikePad(parseFloat(pad.getAttribute('data-pitch')),pad)
+})
+window.addEventListener('keyup',e=>{
+  const pad=document.querySelector(`.nova-pad[data-trigger="${e.key.toLowerCase()}"]`)
+  if(pad)releasePad(parseFloat(pad.getAttribute('data-pitch')))
+})
+</script>
+</body>
+</html>
