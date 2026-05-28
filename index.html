@@ -168,36 +168,54 @@ hr.div{border:none;border-top:1px solid var(--border)}
 .chapter-label{font-family:var(--mono);font-size:10px;color:var(--muted2);letter-spacing:.15em;text-transform:uppercase;padding-top:.2rem}
 .chapter-text{font-size:.975rem;color:var(--muted);line-height:2}
 
-/* ── PHOTO FRAME (About) ── */
+/* ── ABOUT PHOTO (static) ── */
 .about-photo-section{max-width:var(--max);margin:0 auto;padding:3rem var(--pad) 4rem;display:grid;grid-template-columns:240px 1fr;gap:3.5rem;align-items:start;width:100%}
-.photo-frame{border:1px solid var(--frame-border);border-radius:6px;overflow:hidden;background:var(--frame-bg);aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;position:relative;cursor:pointer}
-.photo-frame img{width:100%;height:100%;object-fit:cover;display:block}
-.photo-frame-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;width:100%;height:100%;min-height:320px}
-.photo-frame-placeholder input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
-.photo-frame-icon{font-size:2rem;opacity:.2}
-.photo-frame-label{font-family:var(--mono);font-size:10px;color:var(--muted2);letter-spacing:.1em;text-transform:uppercase}
-.photo-frame-sub{font-family:var(--mono);font-size:9px;color:var(--muted2);opacity:.5}
 .about-bio-text{padding-top:.25rem;display:flex;flex-direction:column;gap:0}
 
-/* ── PERSONAL / LANDSCAPE FRAME ── */
-.landscape-section{max-width:var(--max);margin:0 auto;padding:0 var(--pad) 2rem;width:100%}
-.landscape-frame{border:1px solid var(--frame-border);border-radius:6px;overflow:hidden;background:var(--frame-bg);width:100%;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;position:relative;cursor:pointer;max-height:460px}
-.landscape-frame img.frame-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none}
-.landscape-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem}
-.landscape-placeholder input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;z-index:2}
-.landscape-ph-icon{font-size:2.5rem;opacity:.15}
-.landscape-ph-label{font-family:var(--mono);font-size:10px;color:var(--muted2);letter-spacing:.12em;text-transform:uppercase}
-.landscape-ph-sub{font-family:var(--mono);font-size:9px;color:var(--muted2);opacity:.5}
+/* ── MEDIA SHOWCASE ── */
+.media-showcase{max-width:1200px;margin:0 auto;padding:0 var(--pad) 5rem}
+.media-hero-label{font-family:var(--mono);font-size:10px;color:var(--muted2);letter-spacing:.18em;text-transform:uppercase;margin-bottom:3rem;display:flex;align-items:center;gap:12px}
+.media-hero-label::after{content:'';width:24px;height:1px;background:var(--border2)}
 
-/* ── REELS GRID ── */
-.reels-section{max-width:var(--max);margin:0 auto;padding:2rem var(--pad) 4rem}
-.reels-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
-.reel-frame{border:1px solid var(--frame-border);border-radius:6px;overflow:hidden;background:var(--frame-bg);aspect-ratio:9/16;display:flex;align-items:center;justify-content:center;position:relative;cursor:pointer;width:100%}
-.reel-frame img{width:100%;height:100%;object-fit:cover;display:block}
-.reel-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem}
-.reel-placeholder input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;z-index:2;width:100%;height:100%}
-.reel-ph-icon{font-size:1.5rem;opacity:.15}
-.reel-ph-num{font-family:var(--mono);font-size:9px;color:var(--muted2);letter-spacing:.1em;text-transform:uppercase}
+/* Reel grid */
+.reel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-bottom:1.25rem}
+@media(max-width:768px){.reel-grid{grid-template-columns:1fr;gap:1rem}}
+
+.reel-card{position:relative;aspect-ratio:9/16;border-radius:12px;overflow:hidden;background:#0a0a0a;cursor:default;isolation:isolate}
+.reel-card::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.75) 0%,rgba(0,0,0,.15) 50%,transparent 100%);z-index:1;transition:opacity .4s ease}
+.reel-card:hover::before{opacity:.85}
+.reel-card video,.reel-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.25,1,.5,1)}
+.reel-card:hover video,.reel-card:hover img{transform:scale(1.04)}
+.reel-caption{position:absolute;bottom:0;left:0;right:0;z-index:2;padding:1.5rem 1.25rem 1.25rem;transform:translateY(4px);transition:transform .4s ease;opacity:0;transition:opacity .35s ease,transform .35s ease}
+.reel-card:hover .reel-caption{opacity:1;transform:translateY(0)}
+.reel-caption-index{font-family:var(--mono);font-size:9px;color:rgba(255,255,255,.45);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.3rem}
+.reel-caption-title{font-size:13px;color:#fff;font-weight:400;line-height:1.4}
+.reel-glow{position:absolute;inset:0;z-index:0;border-radius:12px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.07);pointer-events:none;transition:box-shadow .4s}
+.reel-card:hover .reel-glow{box-shadow:inset 0 0 0 1px rgba(255,255,255,.16),0 0 40px rgba(255,255,255,.04)}
+
+/* Placeholder reel card (before you add real media) */
+.reel-placeholder-static{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;z-index:1}
+.reel-placeholder-static .rpl-num{font-family:var(--mono);font-size:10px;color:rgba(255,255,255,.12);letter-spacing:.18em;text-transform:uppercase}
+.reel-placeholder-static .rpl-bar{width:32px;height:1px;background:rgba(255,255,255,.08)}
+
+/* Visuals row (2-col) */
+.visuals-row{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+@media(max-width:600px){.visuals-row{grid-template-columns:1fr;gap:1rem}}
+
+.visual-card{position:relative;border-radius:12px;overflow:hidden;background:#0a0a0a;isolation:isolate}
+.visual-card.portrait{aspect-ratio:3/4}
+.visual-card.landscape{aspect-ratio:16/9}
+.visual-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.25,1,.5,1);filter:grayscale(15%)}
+.visual-card:hover img{transform:scale(1.04);filter:grayscale(0%)}
+.visual-card::after{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(255,255,255,.02) 0%,transparent 60%);pointer-events:none}
+.visual-glow{position:absolute;inset:0;z-index:2;border-radius:12px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.07);pointer-events:none;transition:box-shadow .4s}
+.visual-card:hover .visual-glow{box-shadow:inset 0 0 0 1px rgba(255,255,255,.16)}
+.visual-placeholder-static{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem}
+.visual-placeholder-static span{font-family:var(--mono);font-size:9px;color:rgba(255,255,255,.1);letter-spacing:.16em;text-transform:uppercase}
+
+/* Scroll reveal */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
 
 /* ── THOUGHTS ── */
 .thoughts-wrap{max-width:880px;margin:0 auto;padding:4rem var(--pad)}
@@ -434,55 +452,39 @@ footer p{font-family:var(--mono);font-size:10.5px;color:var(--muted2)}
 
 /* ── Mobile portrait: 480px ── */
 @media(max-width:480px){
-  /* nav — icon only on right, scrollable tabs */
   nav{padding:.65rem .9rem;gap:.4rem}
   .nav-logo{font-size:.82rem;max-width:90px}
   .nav-tab{padding:.28rem .45rem;font-size:9.5px}
   .icon-btn{width:28px;height:28px;font-size:12px}
-
-  /* hero */
   .hero{padding:6rem 1rem 3.5rem}
   .hero h1{font-size:clamp(1.9rem,9.5vw,3rem);line-height:1.05}
   .hero-eyebrow{font-size:9.5px;letter-spacing:.1em}
   .hero-bio{font-size:13px}
   .btn-pill{font-size:11px;padding:8px 16px}
-
-  /* sections */
   .section,.section-wide{padding:2rem 1rem}
-
-  /* project */
   .project-card{gap:1.25rem}
   .project-visual{aspect-ratio:4/3}
   .project-title{font-size:1.25rem}
   .code-canvas{padding:.85rem;font-size:10px}
-
-  /* personal */
   .novapad-grid{grid-template-columns:repeat(3,1fr);gap:7px}
   .nova-pad{min-height:52px}
   .novapad-wrapper{padding:1.25rem .85rem}
-
-  /* reel grid */
-  .creative-media-grid{grid-template-columns:1fr}
-
-  /* about */
+  .reel-grid{grid-template-columns:1fr;gap:.85rem}
+  .visuals-row{grid-template-columns:1fr;gap:.85rem}
+  .visual-card.portrait{aspect-ratio:4/3}
+  .media-showcase{padding-bottom:3rem}
   .about-page-hero h2{font-size:clamp(1.8rem,8vw,2.8rem)}
-  .photo-frame{max-width:140px}
-
-  /* fixed bars */
+  .about-photo-section{grid-template-columns:1fr;gap:2rem}
   .music-bar{left:.5rem;bottom:.5rem;gap:.3rem;padding:.35rem .55rem}
   #musicLabel{display:none}
   .music-waves{height:10px}
   .chat-float{right:.5rem;bottom:.5rem;padding:.35rem .75rem;gap:6px}
   .chat-float-label{font-size:10px}
-
-  /* agent */
   .agent-panel{border-radius:8px}
   .cli-topbar{padding:.55rem .85rem}
   .cli-body{padding:.85rem;gap:.6rem;font-size:11.5px}
   .cli-chips{padding:.35rem .85rem}
   .cli-input-row{padding:.55rem .85rem}
-
-  /* footer */
   footer p{font-size:9.5px}
 }
 
@@ -821,7 +823,7 @@ footer p{font-family:var(--mono);font-size:10.5px;color:var(--muted2)}
           <h2 class="project-title">Gulacci</h2>
           <p class="project-description">Full brand website for a shoes label. Product showcase, responsive grid layout, modern minimalist design built for conversions.</p>
           <div class="project-tags"><span class="project-tag">React.js</span><span class="project-tag">E-commerce</span><span class="project-tag">Branding</span></div>
-          <div class="project-links"><a href="https://gulacci.vercel.app/" target="_blank">GitHub ↗</a></div>
+          <div class="project-links"><a href="https://github.com/Ammar2380/Gulacci" target="_blank">GitHub ↗</a></div>
         </div>
       </div>
 
@@ -936,14 +938,13 @@ footer p{font-family:var(--mono);font-size:10.5px;color:var(--muted2)}
   <hr class="div">
 
   <div class="about-photo-section">
-    <div class="photo-frame" id="photoFrame" onclick="document.getElementById('photoInput').click()">
-      <img id="photoImg" src="" alt="" style="display:none">
-      <div class="photo-frame-placeholder" id="photoPlaceholder">
-        <input type="file" id="photoInput" accept="image/*" onchange="loadPhoto(event)" style="position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%">
-        <div class="photo-frame-icon">◻</div>
-        <div class="photo-frame-label">Your Photo</div>
-        <div class="photo-frame-sub">click to upload</div>
+    <div style="position:relative;aspect-ratio:3/4;border-radius:10px;overflow:hidden;background:var(--frame-bg);border:1px solid var(--border2)">
+      <img src="photo.jpg" alt="Muhammad Ammar Jamali" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block" onerror="this.style.display='none'">
+      <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem">
+        <div style="font-family:var(--mono);font-size:28px;color:var(--muted2);opacity:.3">◻</div>
+        <div style="font-family:var(--mono);font-size:9px;color:var(--muted2);letter-spacing:.14em;text-transform:uppercase;opacity:.4">ammar.jpg</div>
       </div>
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.3) 0%,transparent 60%);pointer-events:none"></div>
     </div>
     <div class="about-bio-text">
       <div class="sec-label" style="margin-bottom:1.5rem">Origin</div>
@@ -981,67 +982,117 @@ footer p{font-family:var(--mono);font-size:10.5px;color:var(--muted2)}
 </div>
 
 <div class="page" id="page-personal">
+
+  <!-- HERO -->
   <div class="hero" style="min-height:50vh;padding-bottom:2rem">
-    <h1 class="fadein" style="font-family:var(--serif);font-size:clamp(2.5rem,6vw,5rem);font-weight:400;line-height:1.05;letter-spacing:-.025em;margin-bottom:1.25rem">Creative labs, media mixing,<br><em style="color:var(--muted)">and code playground.</em></h1>
-    <p class="hero-description fadein">An unfiltered sandbox of side interests, interactive experiments, video work, and system logs.</p>
+    <p class="hero-eyebrow fadein"><span class="live-dot"></span>Media · Interests · Experiments</p>
+    <h1 class="fadein" style="font-family:var(--serif);font-size:clamp(2.5rem,6vw,5rem);font-weight:400;line-height:1.05;letter-spacing:-.025em;margin-bottom:1.25rem">Beyond the model.<br><em style="color:var(--muted)">The person behind it.</em></h1>
+    <p class="hero-bio fadein">Side interests, interactive experiments, and a snapshot of how I think outside the codebase.</p>
   </div>
 
   <hr class="div">
 
+  <!-- MEDIA SHOWCASE -->
+  <div class="media-showcase">
+
+    <!-- REELS -->
+    <div class="media-hero-label" style="margin-top:3rem">Reels</div>
+    <div class="reel-grid reveal">
+
+      <div class="reel-card">
+        <video src="reel1.mp4" autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.25,1,.5,1)"></video>
+        <div class="reel-placeholder-static"><div class="rpl-num">01</div><div class="rpl-bar"></div></div>
+        <div class="reel-glow"></div>
+        <div class="reel-caption">
+          <div class="reel-caption-index">Reel 01</div>
+          <div class="reel-caption-title">Add your caption here</div>
+        </div>
+        <div class="reel-card-frame" style="position:absolute;inset:0;z-index:0;background:linear-gradient(135deg,#0a0a12 0%,#050508 100%)"></div>
+      </div>
+
+      <div class="reel-card">
+        <video src="reel2.mp4" autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.25,1,.5,1)"></video>
+        <div class="reel-placeholder-static"><div class="rpl-num">02</div><div class="rpl-bar"></div></div>
+        <div class="reel-glow"></div>
+        <div class="reel-caption">
+          <div class="reel-caption-index">Reel 02</div>
+          <div class="reel-caption-title">Add your caption here</div>
+        </div>
+        <div style="position:absolute;inset:0;z-index:0;background:linear-gradient(135deg,#0a0a12 0%,#050508 100%)"></div>
+      </div>
+
+      <div class="reel-card">
+        <video src="reel3.mp4" autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.25,1,.5,1)"></video>
+        <div class="reel-placeholder-static"><div class="rpl-num">03</div><div class="rpl-bar"></div></div>
+        <div class="reel-glow"></div>
+        <div class="reel-caption">
+          <div class="reel-caption-index">Reel 03</div>
+          <div class="reel-caption-title">Add your caption here</div>
+        </div>
+        <div style="position:absolute;inset:0;z-index:0;background:linear-gradient(135deg,#0a0a12 0%,#050508 100%)"></div>
+      </div>
+
+    </div><!-- /reel-grid -->
+
+    <!-- VISUALS ROW -->
+    <div class="media-hero-label" style="margin-top:3.5rem">Visuals</div>
+    <div class="visuals-row reveal" style="transition-delay:.12s">
+
+      <div class="visual-card portrait">
+        <img src="visual1.jpg" alt="Ammar Jamali" onerror="this.style.display='none'">
+        <div class="visual-placeholder-static"><span>visual 01</span></div>
+        <div class="visual-glow"></div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:1.25rem">
+        <div class="visual-card landscape" style="flex:1">
+          <img src="visual2.jpg" alt="" onerror="this.style.display='none'">
+          <div class="visual-placeholder-static"><span>visual 02</span></div>
+          <div class="visual-glow"></div>
+        </div>
+        <div class="visual-card landscape" style="flex:1">
+          <img src="visual3.jpg" alt="" onerror="this.style.display='none'">
+          <div class="visual-placeholder-static"><span>visual 03</span></div>
+          <div class="visual-glow"></div>
+        </div>
+      </div>
+
+    </div><!-- /visuals-row -->
+
+    <p style="font-family:var(--mono);font-size:9px;color:var(--muted2);opacity:.4;margin-top:1.75rem;letter-spacing:.1em">
+      Place reel1.mp4 · reel2.mp4 · reel3.mp4 · visual1.jpg · visual2.jpg · visual3.jpg in your project root.
+    </p>
+
+  </div><!-- /media-showcase -->
+
+  <hr class="div">
+
+  <!-- NOVAPAD -->
   <div class="section">
     <div class="sec-label">Interactive Synthesis</div>
     <div class="novapad-wrapper">
       <div class="novapad-title">NovaPad: C-Minor Pentatonic Matrix</div>
       <p style="font-size:12px;color:var(--muted);margin-bottom:2rem;text-align:center;font-family:var(--mono)">Press 1–4 · Q–R · A–F to trigger generative audio · hold to sustain</p>
       <div class="novapad-grid" id="novaGrid">
-        <div class="nova-pad" data-pitch="261.63" data-trigger="1">1<br><span style="opacity:.4;font-size:8px">C4</span></div>
-        <div class="nova-pad" data-pitch="311.13" data-trigger="2">2<br><span style="opacity:.4;font-size:8px">Eb4</span></div>
-        <div class="nova-pad" data-pitch="349.23" data-trigger="3">3<br><span style="opacity:.4;font-size:8px">F4</span></div>
-        <div class="nova-pad" data-pitch="392.00" data-trigger="4">4<br><span style="opacity:.4;font-size:8px">G4</span></div>
-        <div class="nova-pad" data-pitch="466.16" data-trigger="q">Q<br><span style="opacity:.4;font-size:8px">Bb4</span></div>
-        <div class="nova-pad" data-pitch="523.25" data-trigger="w">W<br><span style="opacity:.4;font-size:8px">C5</span></div>
-        <div class="nova-pad" data-pitch="622.25" data-trigger="e">E<br><span style="opacity:.4;font-size:8px">Eb5</span></div>
-        <div class="nova-pad" data-pitch="698.46" data-trigger="r">R<br><span style="opacity:.4;font-size:8px">F5</span></div>
-        <div class="nova-pad" data-pitch="783.99" data-trigger="a">A<br><span style="opacity:.4;font-size:8px">G5</span></div>
-        <div class="nova-pad" data-pitch="932.33" data-trigger="s">S<br><span style="opacity:.4;font-size:8px">Bb5</span></div>
-        <div class="nova-pad" data-pitch="1046.50" data-trigger="d">D<br><span style="opacity:.4;font-size:8px">C6</span></div>
-        <div class="nova-pad" data-pitch="1244.51" data-trigger="f">F<br><span style="opacity:.4;font-size:8px">Eb6</span></div>
+        <div class="nova-pad" data-pitch="261.63" data-trigger="1"><span class="pad-key">1</span><span class="pad-note">C4</span></div>
+        <div class="nova-pad" data-pitch="311.13" data-trigger="2"><span class="pad-key">2</span><span class="pad-note">Eb4</span></div>
+        <div class="nova-pad" data-pitch="349.23" data-trigger="3"><span class="pad-key">3</span><span class="pad-note">F4</span></div>
+        <div class="nova-pad" data-pitch="392.00" data-trigger="4"><span class="pad-key">4</span><span class="pad-note">G4</span></div>
+        <div class="nova-pad" data-pitch="466.16" data-trigger="q"><span class="pad-key">Q</span><span class="pad-note">Bb4</span></div>
+        <div class="nova-pad" data-pitch="523.25" data-trigger="w"><span class="pad-key">W</span><span class="pad-note">C5</span></div>
+        <div class="nova-pad" data-pitch="622.25" data-trigger="e"><span class="pad-key">E</span><span class="pad-note">Eb5</span></div>
+        <div class="nova-pad" data-pitch="698.46" data-trigger="r"><span class="pad-key">R</span><span class="pad-note">F5</span></div>
+        <div class="nova-pad" data-pitch="783.99" data-trigger="a"><span class="pad-key">A</span><span class="pad-note">G5</span></div>
+        <div class="nova-pad" data-pitch="932.33" data-trigger="s"><span class="pad-key">S</span><span class="pad-note">Bb5</span></div>
+        <div class="nova-pad" data-pitch="1046.50" data-trigger="d"><span class="pad-key">D</span><span class="pad-note">C6</span></div>
+        <div class="nova-pad" data-pitch="1244.51" data-trigger="f"><span class="pad-key">F</span><span class="pad-note">Eb6</span></div>
       </div>
     </div>
   </div>
 
   <hr class="div">
 
-  <div class="section">
-    <div class="sec-label">Reels</div>
-    <div class="creative-media-grid" id="reelsGrid">
-      <div class="media-slot" id="reel-slot-1">
-        <div class="video-container-mock" id="reel-frame-1" onclick="document.getElementById('reel-input-1').click()">
-          <input type="file" id="reel-input-1" accept="image/*,video/*" style="display:none" onchange="loadReel(event,1)">
-          <div class="video-overlay-details"><span>Reel 01</span>click to upload</div>
-        </div>
-        <div class="media-meta-box"><h4>Reel 01</h4><p>Click the frame above to upload your video or image.</p></div>
-      </div>
-      <div class="media-slot" id="reel-slot-2">
-        <div class="video-container-mock" id="reel-frame-2" onclick="document.getElementById('reel-input-2').click()">
-          <input type="file" id="reel-input-2" accept="image/*,video/*" style="display:none" onchange="loadReel(event,2)">
-          <div class="video-overlay-details"><span>Reel 02</span>click to upload</div>
-        </div>
-        <div class="media-meta-box"><h4>Reel 02</h4><p>Click the frame above to upload your video or image.</p></div>
-      </div>
-      <div class="media-slot" id="reel-slot-3">
-        <div class="video-container-mock" id="reel-frame-3" onclick="document.getElementById('reel-input-3').click()">
-          <input type="file" id="reel-input-3" accept="image/*,video/*" style="display:none" onchange="loadReel(event,3)">
-          <div class="video-overlay-details"><span>Reel 03</span>click to upload</div>
-        </div>
-        <div class="media-meta-box"><h4>Reel 03</h4><p>Click the frame above to upload your video or image.</p></div>
-      </div>
-      <p style="font-family:var(--mono);font-size:10px;color:var(--muted2);margin-top:1.25rem;text-align:center">Click any slot · Videos play on hover · Images display instantly</p>
-  </div>
-  </div>
-
-  <hr class="div">
-
+  <!-- THINKING LOGS -->
   <div class="section">
     <div class="sec-label">Theoretical Tracking Logs</div>
     <div class="log-entry">
@@ -1130,47 +1181,11 @@ function toggleMusic(){
   }
 }
 
-// ── PHOTO / LANDSCAPE / REEL UPLOAD ──
-function loadPhoto(e){
-  const f=e.target.files[0];if(!f)return
-  const r=new FileReader();r.onload=ev=>{
-    document.getElementById('photoImg').src=ev.target.result
-    document.getElementById('photoImg').style.display='block'
-    document.getElementById('photoPlaceholder').style.display='none'
-  };r.readAsDataURL(f)
-}
-function loadLandscape(e){
-  const f=e.target.files[0];if(!f)return
-  const r=new FileReader();r.onload=ev=>{
-    const img=document.getElementById('landscapeImg')
-    img.src=ev.target.result;img.style.display='block'
-    const ph=document.getElementById('landscapePlaceholder')
-    if(ph)ph.style.display='none'
-  };r.readAsDataURL(f)
-}
-function loadReel(e,n){
-  const f=e.target.files[0];if(!f)return
-  const frame=document.getElementById('reel-frame-'+n)
-  const overlay=frame.querySelector('.video-overlay-details')
-  frame.querySelectorAll('img,video').forEach(el=>el.remove())
-  if(f.type.startsWith('video/')){
-    const vid=document.createElement('video')
-    vid.src=URL.createObjectURL(f);vid.loop=true;vid.muted=true;vid.playsInline=true
-    vid.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1'
-    frame.insertBefore(vid,frame.firstChild)
-    if(overlay){overlay.innerHTML='<span>Reel 0'+n+'</span>hover to play';overlay.style.zIndex='2'}
-    frame.addEventListener('mouseenter',()=>vid.play(),{passive:true})
-    frame.addEventListener('mouseleave',()=>vid.pause(),{passive:true})
-  } else {
-    const r=new FileReader();r.onload=ev=>{
-      const img=document.createElement('img')
-      img.src=ev.target.result
-      img.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1'
-      frame.insertBefore(img,frame.firstChild)
-      if(overlay){overlay.innerHTML='<span>Reel 0'+n+'</span>uploaded';overlay.style.zIndex='2'}
-    };r.readAsDataURL(f)
-  }
-}
+// ── SCROLL REVEAL ──
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); revealObserver.unobserve(e.target) } })
+}, { threshold: 0.08 })
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el))
 
 // ── AI AGENT ──
 let cliInitialized = false
